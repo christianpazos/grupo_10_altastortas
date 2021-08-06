@@ -22,18 +22,12 @@
     <% } %>
     </div>
   <div class="controlFormulario">
-      <input class="control" type="email" name="E-mail" placeholder="E-mail" required minlength="7" value="<%= locals.oldData ? oldData.E-mail : null %>">
-      <% if (locals.errors && errors.E-mail) {%>
-        <p> <%= errors.E-mail.msg %>   </p>
+      <input class="control" type="email" name="email" placeholder="Email" required minlength="7" value="<%= locals.oldData ? oldData.email : null %>">
+      <% if (locals.errors && errors.email) {%>
+        <p> <%= errors.email.msg %>   </p>
     <% } %>
     </div>
-<!--   <div class="controlFormulario" id="nacimientos">
-      <h3>Fecha de nacimiento</h3>
-      <input class="control" type="date" name="nacimiento" required>
-  </div> -->
-  <!-- <div class="controlFormulario">
-      <input class="control" type="text" name="domicilio" placeholder="Domicilio" required>
-  </div> -->
+
   <div class="controlFormulario" id="fotoPerfil">
       <h3>Subí una imagen para generar tu avatar</h3>
       <input type="file" name="avatar" id="Subirfoto">

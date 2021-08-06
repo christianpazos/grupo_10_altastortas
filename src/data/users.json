@@ -3,9 +3,8 @@
         "id": 1,
         "nombre": "Marcos Pérez",
         "nombreUsuario": "Marquitos Perez",
-        "E-mail": "marcosperez@gmail.com",
-        "domicilio": "Santa Fe 3215",
-        "foto": "/img/AcaVaImgUsuario.jpg",
+        "email": "marcosperez@gmail.com",
+        "avatar": "/img/AcaVaImgUsuario.jpg",
         "categoryUser": "cliente",
         "password": "Marcos.2003"
     }

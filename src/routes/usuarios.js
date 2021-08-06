@@ -23,7 +23,7 @@ const uploadFile = multer ({storage});
 const validaciones = [
     body('nombre').notEmpty().withMessage('Tenés que escribir tu nombre completo'),
     body('nombreUsuario').notEmpty().withMessage('Tenés que elegir un nombre de usuario'),
-    body('E-mail').notEmpty().isEmail().withMessage('Tenés que escribir un email válido'),
+    body('email').notEmpty().isEmail().withMessage('Tenés que escribir un email válido'),
     body('password').notEmpty().withMessage('Tenés que elegir una contraseña'),
     body('avatar').custom((value, { req })=> {
         let file = req.file;

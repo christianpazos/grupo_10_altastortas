@@ -13,24 +13,25 @@ module.exports = {
     one: function (id) {
         return this.all().find(element => element.id == id);
     },
-/*  create: function(data){
+  create: function(data){
     let users = this.all();
     let lastUser = users[users.length -1]
     let newUser = {
       id: users.length > 0 ? lastUser.id +1 : 1,
-      name: data.name ? data.name : String(data.email).trim()
+      nombre: data.nombre ? data.nombre : String(data.email).trim()
 	.replace(/\s/g, "")
 	.split("@")[0]
 	.toLowerCase(),
+      nombreUsuario: data.nombre ? data.nombre : String(data.email).trim(),
       email: String(data.email),
-      admin: String(data.email).includes("@digitalhouse") || data.email.include("@dh") ? true: false,
+      categoryUser: data.categoryUser,
       password: bcrypt.hashSync(data.password,10),
       avatar: null
     };
     users.push(newUser);
     this.write(users)
   },
-  update:function(data,file,id){
+/*  update:function(data,file,id){
     let users = this.all();
     users.map(user => {
       if(user.id == id){
