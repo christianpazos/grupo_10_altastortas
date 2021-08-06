@@ -4,7 +4,7 @@ const app = express();
 const method = require('method-override');
 
 
-app.set("port", process.env.PORT || 3001);
+app.set("port", process.env.PORT || 3000);
 app.listen(app.get("port"), () => console.log ("Server on http://localhost:"+app.get("port")));
 
 app.use(express.static(path.resolve(__dirname,'../public')));
