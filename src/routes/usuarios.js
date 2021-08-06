@@ -1,11 +1,9 @@
 const express = require ('express');
 const router = express.Router();
-const controller = require ('../controllers/usuario')
+const usuario = require ('../controllers/usuario')
 
-<<<<<<< HEAD
-router.get("/login", controller.login)
-router.get("/register", controller.register)
-=======
+router.get("/login", usuario.login)
+router.get("/register", usuario.register)
 
 const path = require ('path');
 const multer = require ('multer');
@@ -41,7 +39,6 @@ router.get("/login", usuario.login)
 router.post ("/register",uploadFile.single ('avatar'),validaciones, usuario.processRegister)
 //Formulario de Registro
 router.get("/register", usuario.register)
->>>>>>> 9895e92b92f1cf885afdb9905de18fbd357a088c
 
 
 module.exports = router
