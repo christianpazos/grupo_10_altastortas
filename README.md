@@ -1,4 +1,9 @@
 # grupo_10_altastortas
+
+<p align="center">
+  <img src="https://github.com/christianpazos/grupo_10_altastortas/blob/main/public/img/LOGO%20TRANSPARENTE%20G10.png" alt="Logo de la marca"/>
+</p>
+
 Sobre el Sitio:
 "Altas Tortas" ofrece una amplia variedad de productos del mundo de la repostería. 
 Siempre lo más importante de las fiestas es la mesa dulce y en estos tiempos de aislamiento, por más que
