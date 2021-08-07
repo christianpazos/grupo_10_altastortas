@@ -1,6 +1,5 @@
-const {body}= require('express-validator');
 
-
+const { body } = require ('express-validator')
 module.exports = [
     body('nombre').notEmpty().withMessage('Tenés que escribir tu nombre completo'),
     body('nombreUsuario').notEmpty().withMessage('Tenés que elegir un nombre de usuario'),

@@ -19,4 +19,3 @@ router.post ("/register",[uploadFile.single ('avatar'),validRegister], usuario.s
 //Formulario de Registro
 
 
-module.exports = router

@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "clear && nodemon src/index.js -e css,ejs,js,json,mjs",
+    "test": "nodemon src/index.js -e css,ejs,js,json,mjs",
     "start": "node src/index.js"
   },
   "keywords": [],
