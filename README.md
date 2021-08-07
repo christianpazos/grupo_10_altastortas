@@ -28,7 +28,7 @@ Tengo dos hijos perrunos Chihuahuas, Hannah (7) y Sherlock (2), que me son mi in
 
 # **Tablero Trello:** 
 
-TRELLO 3: https://trello.com/b/b1Lj5OnL/grupo-10-altas-tortas-sprint-3
+TRELLO 3: https://trello.com/b/b1Lj5OnL/grupo-10-altas-tortas-sprint-3<br>
 TRELLO 4: https://trello.com/b/NwLFe2D6/grupo-10-altas-tortas-sprint-4
 
 ## **Sitios de Referencia:** 
