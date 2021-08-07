@@ -15,7 +15,8 @@ individuales para satisfacer, por ejemplo, tu antojo de Cheesecake durante aisla
 La audiencia objetivo tiene pocas barreras etarias y de género, aunque entendemos que lo más probable es que nuestros 
 consumidores sean de entre 20 y 40 años, mayoritariamente mujeres, con opciones para audiencias de medio y alto poder adquisitivo.
 
-Sobre Nosotros:
+# **Sobre Nosotros"**
+
 (1) Me llamo María Victoria Pavón Roust y tengo 21 años. Trabajo como administrativa en una cooperativa de ingeniería y mantenimiento urbano.
 Tengo dos hijos perrunos Chihuahuas, Hannah (7) y Sherlock (2), que me son mi inspiración para estudiar programación, ingeniería y no renunciar a mi laburo.
 
@@ -25,8 +26,12 @@ Tengo dos hijos perrunos Chihuahuas, Hannah (7) y Sherlock (2), que me son mi in
 
 (4) Me llamo Carlos Benitez, tengo 31 año, trabajo como administrador de redes en la fuerza federal, soy electronico y eletromecanico , incursionando en el mundo de la programacion. Tengo un curso de antenista/torrista y otro de operador de VANT/DRONE. Toco el violin y soy afionado a la musica clasica. 
 
+# **Tablero Trello:** 
+
 TRELLO 3: https://trello.com/b/b1Lj5OnL/grupo-10-altas-tortas-sprint-3
 TRELLO 4: https://trello.com/b/NwLFe2D6/grupo-10-altas-tortas-sprint-4
+
+## **Sitios de Referencia:** 
 
 Listado de referencias de webs temáticas: Estas son los MarketPlace que nos inspiraron a hacer nuestro wireframe, principalmente por la estética. Tienen al mismo público objetivo que nuestro cliente y eso es lo que necesitamos para nuestra web. Especificaremos que nos pareció cada web.
 
