@@ -3,7 +3,7 @@
 </p>
 
 # **Grupo 10 "Altas Tortas"**
-
+---
 # **Sobre el Sitio:**
 
 "Altas Tortas" ofrece una amplia variedad de productos del mundo de la repostería. 
