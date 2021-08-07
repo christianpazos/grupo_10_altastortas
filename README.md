@@ -1,4 +1,4 @@
-# grupo_10_altastortas
+# **Grupo 10 "Altas Tortas"**
 
 <p align="center">
   <img src="https://github.com/christianpazos/grupo_10_altastortas/blob/main/public/img/LOGO%20TRANSPARENTE%20G10.png" alt="Logo de la marca"/>
