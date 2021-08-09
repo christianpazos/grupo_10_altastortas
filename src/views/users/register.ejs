@@ -8,7 +8,7 @@
 <main>
 <!-- Formularios -->
 
-<form action="/usuarios/register" method="POST" class="formularioRegistro" enctype="multipart/form-data">
+<form action="/usuarios/save" method="POST" class="formularioRegistro" enctype="multipart/form-data">
   <div class="controlFormulario">
       <input class="control" type="text" name="nombre" placeholder="Nombre y Apellido" value="<%= locals.oldData ? oldData.nombre : null %>">
         <% if (locals.errors && errors.nombre) {%>
