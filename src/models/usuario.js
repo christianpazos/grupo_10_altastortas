@@ -1,9 +1,12 @@
 const path = require('path');
 const fs = require('fs');
-
+const bcrypt = require("bcrypt");
 module.exports = {
     // Directory: ruta al json con el que se va a estar modificando el modelo
     directory: path.resolve(__dirname,"../data","users.json"),
+    write: function(data){
+      return fs.writeFileSync(this.directory,JSON.stringify(data,null,2)) 
+    },
     // All: devuelve la informacion del JSON que vamos a consultar. todos los resultados.
     all: function() {
         const file = fs.readFileSync(this.directory,"utf-8")
@@ -13,20 +16,25 @@ module.exports = {
     one: function (id) {
         return this.all().find(element => element.id == id);
     },
-  create: function(data){
-    let users = this.all();
-    let lastUser = users[users.length -1]
-    let newUser = {
-      id: users.length > 0 ? lastUser.id +1 : 1,
+  create: function(data,file){
+    let users = this.all();//leyendo todos los usuarios
+    let lastUser = users[users.length -1]//leyendo el ultimo usuario si es que existe
+    let newUser = {//creo el nuevo usario, como el crud
+      id: users.length > 0 ? lastUser.id +1 : 1,//capture la barra de arriba y lastUser y le pongo el id + 1 
       nombre: data.nombre ? data.nombre : String(data.email).trim()
-	.replace(/\s/g, "")
-	.split("@")[0]
+	.replace(/\s/g, "")//quito espacio en el email
+	.split("@")[0]//separo en string por el @ y me quedo con la primera parte
 	.toLowerCase(),
-      nombreUsuario: data.nombre ? data.nombre : String(data.email).trim(),
+      email: String(data.email),//tomo el email
+      admin: String(data.email).includes("@digitalhouse") || data.email.includes("@dh") ? true: false,//si es con @digitalhose o @dh va hacer admin o no
+      password: bcrypt.hashSync(data.password,10),//contrase;a la encripto , cantidad de veces del intentado
+      avatar: file ? file.filename: null // si viene un avatar o sino null
+
+      /*nombreUsuario: data.nombre ? data.nombre : String(data.email).trim(),
       email: String(data.email),
       categoryUser: data.categoryUser,
       password: bcrypt.hashSync(data.password,10),
-      avatar: null
+      avatar: null*/
     };
     users.push(newUser);
     this.write(users)

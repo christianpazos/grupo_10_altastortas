@@ -1,0 +1,57 @@
+<html lang="en">
+<%- include("../includes/head") %> 
+<body>
+  <form action="/user/update?method=PUT" method="post">
+    <fieldset>
+      <label for="name">Name</label>
+      <input type="text" name="name" id="name" value="<%= user.name%>">
+    </fieldset>
+    <fieldset>
+      <label for="email">Email</label>
+      <input type="email" name="email" id="email" value="<%= user.email%>">
+    </fieldset>
+    <fieldset>
+      <label for="lastPassword">Last Password</label>
+      <input type="password" name="lastPassword" id="lastPassword" value="">
+    </fieldset>
+    <fieldset>
+      <label for="password">New Password</label>
+      <input type="password" name="password" id="password" value="">
+    </fieldset>
+    <fieldset>
+      <button type="submit"><i class="fas fa-sync"></i></button>
+    </fieldset>
+  </form>
+  <% if(user && user.admin) {%>
+      <form action="/user/avatar?method=PUT" method="post" enctype="multipart/form-data">
+
+      <% if(user.avatar) {%>
+      <figure id="avatarPreview">
+        <img src="/image/avatar/<%= user.avatar%>" alt="<%= user.name%>">
+      </figure>
+      <fieldset>
+      <label for="avatar"></label>
+      <input type="file" name="avatar" id="avatar">
+      </fieldset>
+      <% } else {%>
+      <fieldset>
+      <label for="avatar"><i class="fas fa-user"></i></label>
+      <input type="file" name="avatar" id="avatar">
+      </fieldset>
+      <% }%>
+
+      <fieldset>
+      <button type="submit"><i class="fas fa-sync"></i></button>
+      </fieldset>  
+
+
+      </form>
+  <% }%>
+
+  <nav>
+    <a href="/">volver <i class="fas fa-home"></i></a>
+    <a href="/user/logout">logout <i class="fas fa-power-off"></i></a>
+  </nav>
+  
+</body>
+</html>

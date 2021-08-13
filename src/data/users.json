@@ -1,12 +1,27 @@
 [
-    {
-        "id": 1,
-        "nombre": "Marcos Pérez",
-        "nombreUsuario": "Marquitos Perez",
-        "email": "marcosperez@gmail.com",
-        "avatar": "/img/AcaVaImgUsuario.jpg",
-        "categoryUser": "cliente",
-        "password": "Marcos.2003"
-    }
-    
+  {
+    "id": 1,
+    "nombre": "Marcos Pérez",
+    "nombreUsuario": "Marquitos Perez",
+    "email": "marcosperez@gmail.com",
+    "avatar": "/img/AcaVaImgUsuario.jpg",
+    "categoryUser": "cliente",
+    "password": "Marcos.2003"
+  },
+  {
+    "id": 2,
+    "nombre": "carlos",
+    "email": "carlitos.benitez@yahoo.com",
+    "admin": false,
+    "password": "$2b$10$ca/7V/CFl6OfZApIwxMTZOA4RfKLruPDlCGwlYD/aF8/htEJmNecq",
+    "avatar": "avatar1628808899648.jpg"
+  },
+  {
+    "id": 3,
+    "nombre": "prueba",
+    "email": "asdasda@yahoo.com",
+    "admin": false,
+    "password": "$2b$10$wT85gobExObnA.JOdq0zDOb1N5ttNR2HXkNP.qgeSEXSS1bceNjE.",
+    "avatar": "avatar1628808960745.jpg"
+  }
 ]
