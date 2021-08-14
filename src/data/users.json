@@ -23,5 +23,21 @@
     "admin": false,
     "password": "$2b$10$wT85gobExObnA.JOdq0zDOb1N5ttNR2HXkNP.qgeSEXSS1bceNjE.",
     "avatar": "avatar1628808960745.jpg"
+  },
+  {
+    "id": 4,
+    "nombre": "juan",
+    "email": "jauperez@asdas.com",
+    "admin": false,
+    "password": "$2b$10$b9fDhHKxdjvTS3xh7KZdvedBP1IsStKDUIYHQ.OTx/7HsZz9HMgky",
+    "avatar": "avatar1628966055321.jpg"
+  },
+  {
+    "id": 5,
+    "nombre": "asdasd",
+    "email": "asdad@aasdas.com",
+    "admin": false,
+    "password": "$2b$10$HQqYechdDATDGnhle4OIOuTgih1OVZQbq8eNIgpC4D5zmm5Z06JSS",
+    "avatar": "avatar1628967643466.webp"
   }
 ]

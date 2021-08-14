@@ -10,19 +10,19 @@
 
 <form action="/usuarios/save" method="POST" class="formularioRegistro" enctype="multipart/form-data">
   <div class="controlFormulario">
-      <input class="control" type="text" name="nombre" placeholder="Nombre y Apellido" value="<%= locals.oldData ? oldData.nombre : null %>">
+      <input class="control" type="text" name="nombre" placeholder="Nombre y Apellido" value="<%= locals.data ? data.nombre : null %>">
         <% if (locals.errors && errors.nombre) {%>
             <p> <%= errors.nombre.msg %>   </p>
         <% } %>
   </div>
   <div class="controlFormulario">
-      <input class="control" type="text" name="nombreUsuario" placeholder="Nombre de usuario" value="<%= locals.oldData ? oldData.nombreUsuario : null %>">
+      <input class="control" type="text" name="nombreUsuario" placeholder="Nombre de usuario" value="<%= locals.data ? data.nombreUsuario : null %>">
       <% if (locals.errors && errors.nombreUsuario) {%>
         <p> <%= errors.nombreUsuario.msg %>   </p>
     <% } %>
     </div>
-  <div class="controlFormulario">
-      <input class="control" type="email" name="email" placeholder="Email" value="<%= locals.oldData ? oldData.email : null %>">
+  <div class="controlFormulario"><!--preguntar a edu-->
+      <input class="control" type="email" name="email" placeholder="Email" value="<%= locals.data ? data.email : null %>">
       <% if (locals.errors && errors.email) {%>
         <p> <%= errors.email.msg %>   </p>
     <% } %>

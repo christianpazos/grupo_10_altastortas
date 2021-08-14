@@ -21,10 +21,10 @@ module.exports = {
     save: (req,res) => {
         let errors = validationResult(req);//guardamos los datos , y variable para los errores
         if (errors.isEmpty()){//o .length == 0, si no hay errores
-          let user= req.body;//si esta vacio entonces crear el usuario
+          let user= req.body;//si no hay errores (esta vacio isEmpty) entonces crear el usuario
           let avatar = req.file;
           userModel.create(user,avatar);
-          return res.redirect("/");//despues de crear, vuelva a la pagina inicial 
+          return res.redirect("/");//despues de crear, vuelva a la pagina raiz 
         }else{//de modo contrario ir a la vista con los errores
           if (req.file != undefined){
             fs.unlinkSync(path.resolve(__dirname,
@@ -42,9 +42,8 @@ module.exports = {
       },
       access: (req,res) => {
         let errors = validationResult(req); //recibe esos errores
-        if (errors.isEmpty()){//verificar la vueltas de errores, si no hay errores entonces registrar
-          //buscar el usuario por el email
-          let user = userModel.findByEmail(req.body.email);//input checkbox name     
+        if (errors.isEmpty()){//verificar la vueltas de errores, si no hay errores entonces logearse
+          let user = userModel.findByEmail(req.body.email);//buscar el usuario por el email , input checkbox name     
           if (req.body.remember != undefined ){//Si no marcamos el checkbox, culquier dato pero no undefine
               res.cookie("user",//seteamos cookie user 
               user.id,//guardamos esos datos
@@ -54,7 +53,7 @@ module.exports = {
           req.session.user = user;
           return res.redirect("/");//redirigimos a la raiz
         }else{
-          if (req.file != undefined){//todo esto es po si no se registra entonces elimina el archivo subido
+          if (req.file != undefined){//todo esto es por si no se registra entonces elimina el archivo subido
             fs.unlinkSync(
             path.resolve(__dirname,
             "../../public/uploads/avatar/", 

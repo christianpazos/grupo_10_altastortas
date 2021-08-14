@@ -9,11 +9,12 @@
 <!-- Formularios -->
 <form action="/usuarios/access" method="POST" class="formularioLogin">
   <fieldset class="controlFormulario">
-      <input class="control" type="text" name="nombreUsuario" placeholder="Nombre de usuario" required>
+    <!-- no ingresa el valor de usuario, entonces no sepuede buscar por nombre de usuario-->  
+    <input class="control" type="text" name="nombreUsuario" placeholder="Nombre de usuario" required>
   </fieldset>
 
   <fieldset class="controlFormulario">
-      <input class="control" type="password" name="password" placeholder="Contraseña">
+      <input class="control" type="password" name="password" placeholder="Contraseña" required>
   </fieldset>
   <section id="contenedorBotones">
   <button class="button" type="submit">Entrar</button>

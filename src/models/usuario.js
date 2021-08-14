@@ -16,17 +16,25 @@ module.exports = {
     one: function (id) {
         return this.all().find(element => element.id == id);
     },
-  create: function(data,file){
+    findByEmail: function (email){
+      return this.all().find(user => user.email == email)
+    },
+    findByUser: function (email){
+      return this.all().find(user => user.email == email)
+    },
+    create: function(data,file){
     let users = this.all();//leyendo todos los usuarios
     let lastUser = users[users.length -1]//leyendo el ultimo usuario si es que existe
     let newUser = {//creo el nuevo usario, como el crud
       id: users.length > 0 ? lastUser.id +1 : 1,//capture la barra de arriba y lastUser y le pongo el id + 1 
-      nombre: data.nombre ? data.nombre : String(data.email).trim()
+      nombre: data.nombre ? data.nombre : String(data.email).trim()//saca el nombre del email
+      
 	.replace(/\s/g, "")//quito espacio en el email
 	.split("@")[0]//separo en string por el @ y me quedo con la primera parte
-	.toLowerCase(),
+	.toLowerCase(),//combierte miniscula todo
+      //nombreUsuario= String(data.nombreUsuario),
       email: String(data.email),//tomo el email
-      admin: String(data.email).includes("@digitalhouse") || data.email.includes("@dh") ? true: false,//si es con @digitalhose o @dh va hacer admin o no
+      admin: String(data.email).includes("@altastortas") || data.email.includes("@at") ? true: false,//si es con @digitalhose o @dh va hacer admin o no
       password: bcrypt.hashSync(data.password,10),//contrase;a la encripto , cantidad de veces del intentado
       avatar: file ? file.filename: null // si viene un avatar o sino null
 
