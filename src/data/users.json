@@ -39,5 +39,13 @@
     "admin": false,
     "password": "$2b$10$HQqYechdDATDGnhle4OIOuTgih1OVZQbq8eNIgpC4D5zmm5Z06JSS",
     "avatar": "avatar1628967643466.webp"
+  },
+  {
+    "id": 6,
+    "nombre": "jaun",
+    "email": "juan@carlos.com",
+    "admin": false,
+    "password": "$2b$10$37jXTJeM2VfS9Z4H2Fe0E.D5bvwCRlbwULhwBNxd5hXLIE9ORouBu",
+    "avatar": "avatar1629165483872.jpg"
   }
 ]

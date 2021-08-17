@@ -42,6 +42,7 @@ module.exports = {
       },
       access: (req,res) => {
         let errors = validationResult(req); //recibe esos errores
+        //return res.send(errors.length)
         if (errors.isEmpty()){//verificar la vueltas de errores, si no hay errores entonces logearse
           let user = userModel.findByEmail(req.body.email);//buscar el usuario por el email , input checkbox name     
           if (req.body.remember != undefined ){//Si no marcamos el checkbox, culquier dato pero no undefine
@@ -53,14 +54,6 @@ module.exports = {
           req.session.user = user;
           return res.redirect("/");//redirigimos a la raiz
         }else{
-          if (req.file != undefined){//todo esto es por si no se registra entonces elimina el archivo subido
-            fs.unlinkSync(
-            path.resolve(__dirname,
-            "../../public/uploads/avatar/", 
-            req.file.filename
-            )
-          )
-        }
           res.render("users/login", {/*mostrar en la vistas los errores*/
             title:"Access",
             errors:errors.mapped(), /* mejor vista con mapped*/
