@@ -10,7 +10,7 @@
 <form action="/usuarios/access" method="POST" class="formularioLogin">
   <fieldset class="controlFormulario">
     <!-- no ingresa el valor de usuario, entonces no sepuede buscar por nombre de usuario-->  
-    <input class="control" type="text" name="email" placeholder="Nombre de usuario" required>
+    <input class="control" type="text" name="email" placeholder="Ingresar Email" required>
     <% if (locals.errors && errors.email) {%>
       <p> <%= errors.email.msg %>   </p>
   <% } %>

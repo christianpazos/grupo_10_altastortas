@@ -47,5 +47,21 @@
     "admin": false,
     "password": "$2b$10$37jXTJeM2VfS9Z4H2Fe0E.D5bvwCRlbwULhwBNxd5hXLIE9ORouBu",
     "avatar": "avatar1629165483872.jpg"
+  },
+  {
+    "id": 7,
+    "nombre": "asdasdas",
+    "email": "prueba@prueba.com",
+    "admin": false,
+    "password": "$2b$10$z3zNbbNUwURDV3xJ06j.aOXCRwZ6jt/zpra1N9TnP1JsvPa7QSn0i",
+    "avatar": "avatar1629235978819.jpg"
+  },
+  {
+    "id": 8,
+    "nombre": "prueba",
+    "email": "prueba@altastortas.com",
+    "admin": true,
+    "password": "$2b$10$QGic0h6Um9zvP1iQyQJ9q.qvCC2mYtJoQRXi2WCddS79MZF1kHT76",
+    "avatar": "avatar1629324710383.png"
   }
 ]

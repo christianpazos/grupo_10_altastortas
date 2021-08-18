@@ -18,10 +18,10 @@ module.exports = {
     },
     findByEmail: function (email){
       return this.all().find(user => user.email == email)
-    },
+    },/* 
     findByUser: function (email){
       return this.all().find(user => user.email == email)
-    },
+    }, */
     create: function(data,file){
     let users = this.all();//leyendo todos los usuarios
     let lastUser = users[users.length -1]//leyendo el ultimo usuario si es que existe

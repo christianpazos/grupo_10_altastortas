@@ -22,13 +22,13 @@ module.exports = {
         let errors = validationResult(req);//guardamos los datos , y variable para los errores
         if (errors.isEmpty()){//o .length == 0, si no hay errores
           let user= req.body;//si no hay errores (esta vacio isEmpty) entonces crear el usuario
-          let avatar = req.file;
+          let avatar = req.file;//si no viene una una imagen colocar la de defoult 
           userModel.create(user,avatar);
           return res.redirect("/");//despues de crear, vuelva a la pagina raiz 
         }else{//de modo contrario ir a la vista con los errores
           if (req.file != undefined){
             fs.unlinkSync(path.resolve(__dirname,
-              "../../public/uploads/avatars/", 
+              "../../public/uploads/avatar/", 
               req.file.filename
               )
             )//eliminar la imagen
