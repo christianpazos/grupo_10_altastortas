@@ -1,10 +1,15 @@
-<html lang="en">
-  <%- include("../includes/head") %> 
+<%- include("../includes/head") %> 
+
 <body>
-  <form action="/user/update?method=PUT" method="post">
+<!-- Header -->
+<%- include("../includes/header") %> 
+<!-- Fin del Header -->
+<!-- Main -->
+<main>
+  <form action="/usuario/update?method=PUT" method="post">
     <fieldset>
-      <label for="name">Name</label>
-      <input type="text" name="name" id="name" value="<%= user.name%>">
+      <label for="name">Nombre y Apellido</label>
+      <input type="text" name="name" id="nombre" value="<%= user.nambre%>">
     </fieldset>
     <fieldset>
       <label for="email">Email</label>
@@ -52,6 +57,8 @@
     <a href="/">volver <i class="fas fa-home"></i></a>
     <a href="/user/logout">logout <i class="fas fa-power-off"></i></a>
   </nav>
-  
+  </main>
+  <!-- Footer -->
+  <%- include("../includes/footer") %> 
 </body>
 </html>

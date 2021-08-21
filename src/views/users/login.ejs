@@ -9,7 +9,6 @@
 <!-- Formularios -->
 <form action="/usuarios/access" method="POST" class="formularioLogin">
   <fieldset class="controlFormulario">
-    <!-- no ingresa el valor de usuario, entonces no sepuede buscar por nombre de usuario-->  
     <input class="control" type="text" name="email" placeholder="Ingresar Email" required>
     <% if (locals.errors && errors.email) {%>
       <p> <%= errors.email.msg %>   </p>
@@ -18,6 +17,13 @@
 
   <fieldset class="controlFormulario">
       <input class="control" type="password" name="password" placeholder="Contraseña" required>
+      <% if(locals.errors && locals.errors.password){  %>
+        <span class="error"> <%= locals.errors.password.msg %> </span>
+       <% }%>
+  </fieldset>
+  <fieldset>
+    <label for="remember">Recordarme</label>
+    <input type="checkbox" name="remember" id="remember">
   </fieldset>
   <section id="contenedorBotones">
   <button class="button" type="submit">Entrar</button>

@@ -3,24 +3,23 @@ const bcrypt = require("bcrypt");
 const userModel = require("../models/usuario");
 module.exports = [
   body("email").isEmail().custom(value => {
-    let registered = userModel.findByEmail(value);
-    if (!registered) {
-      return Promise.reject('E-mail no found');
-    }
-    return true
-  }),
-  body("password").isLength({ min: 5 }).custom((value, { req }) => {
+    let existUser = userModel.findByEmail(value);//el finbyemail viene del models/user para buscar
+        if (existUser){
+            return true
+        }else{
+            return Promise.reject("No se encontró un usuario");
+        }
 
-    let registered = userModel.findByEmail(req.body.email);
+    }),
+  body('password').isLength({ min:6 }).custom((value,{ req })=>{
+    let existUser = userModel.findByEmail(req.body.email);
+    let validPassword = existUser? bcrypt.compareSync(value, existUser.password) : false; 
+    //comparesync compara texto plano, toma el usuario que existe y el value
     
-    if (!registered) {
-      return Promise.reject('E-mail no found');
+    if (validPassword){
+        return true
+    }else {
+        return Promise.reject("Password Incorrecto");
     }
-    
-    if (bcrypt.compareSync(value, registered.password) != true) {
-      return Promise.reject('Password no match');
-    }
-
-    return true;
-  })
+})
 ]

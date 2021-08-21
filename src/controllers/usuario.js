@@ -8,6 +8,7 @@ const path= require('path')
 module.exports = {
     login: (req, res) => res.render("users/login", {title: "Formulario de login"}),
     register: (req, res) => res.render("users/register", {title: "Formulario de Registro"}),
+    profile:(req,res) => res.render("users/profile",{title:"Perfil de Usuario"}),
     processRegister: (req, res) => {
         const resultValidation = validationResult(req);
 
@@ -59,7 +60,19 @@ module.exports = {
             errors:errors.mapped(), /* mejor vista con mapped*/
             data:req.body});/*pasar la vieja data*/
         }//pasando a la vista los errores
-      } 
+      },
+      logout: (req,res) => {
+        req.session.destroy();
+        res.cookie("user",null, {maxAge:0});
+        res.redirect("/");
+      },  
+    update: (req,res) => {
+    userModel.update(req.body,null);
+    delete req.session.user;//elimino la sesion previa
+    let user = userModel.findByEmail(req.body.email);//
+    req.session.user = user;
+    return res.redirect("/")
+    } 
     /* access: post extra - utilizar el metodo de validPassword y el metodo byEmail - guardar el usuario logeado en sesion - instalar express sesion*/
     /*save: post register - utilizar metodo create del usuario*/
 }

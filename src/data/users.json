@@ -63,5 +63,13 @@
     "admin": true,
     "password": "$2b$10$QGic0h6Um9zvP1iQyQJ9q.qvCC2mYtJoQRXi2WCddS79MZF1kHT76",
     "avatar": "avatar1629324710383.png"
+  },
+  {
+    "id": 9,
+    "nombre": "juan perez`",
+    "email": "prueba@prueba2.com",
+    "admin": false,
+    "password": "$2b$10$zhBGjplWCic9RmxphbqgP.l8.TgFNWuNpG82zTfNNmHsJxNLSIW9W",
+    "avatar": "avatar1629563215149.png"
   }
 ]

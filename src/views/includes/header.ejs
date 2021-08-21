@@ -12,7 +12,30 @@
     </form>
   
       <nav>
-  
+        <% if (user){  %> 
+          <a href="/contacto">
+            <i class="fas fa-comment-alt"></i><br><br>
+          </a>
+          
+          <a href="/usuarios/profile">
+            <i class="fas fa-user"></i><br><br>
+          </a>
+          
+          <a href='/cart'>
+            <i class="fas fa-shopping-basket"></i><br><br>
+          </a>
+          
+          <a href='/usuarios/logout'>
+            <i class="fas fa-user-slash"></i><br><br>
+          </a> <br><br>
+          <h1>Welcome! <%= user.nombre %>
+          <% if (user.admin){ %>
+            <a href="/productos/crear"> <i class="fas fa-pencil-alt"></i></a><br><br>
+            <i class="fas fa-user-edit"></i>
+            
+          <% } %>           
+          <% }else{ %>
+            
             <a href="/usuarios/register">
               <i class="fas fa-user-plus"></i><br><br>
             </a>
@@ -28,5 +51,8 @@
             <a href='/cart'>
               <i class="fas fa-shopping-basket"></i><br><br>
             </a>
+            
+            <% }%>
+
     </nav> 
   </header> 

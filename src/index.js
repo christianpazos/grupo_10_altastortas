@@ -25,7 +25,8 @@ app.use(session({
     saveUninitialized:true}));
 
 //Middlewares Custom
-app.use(require("./middlewares/styles"))
+app.use(require("./middlewares/styles"));
+app.use(require("./middlewares/user"));
 
 
 //App Routes
