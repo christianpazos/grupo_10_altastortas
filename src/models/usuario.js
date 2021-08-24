@@ -36,7 +36,7 @@ module.exports = {
       email: String(data.email),//tomo el email
       admin: String(data.email).includes("@altastortas") || data.email.includes("@at") ? true: false,//si es con @digitalhose o @dh va hacer admin o no
       password: bcrypt.hashSync(data.password,10),//contrase;a la encripto , cantidad de veces del intentado
-      avatar: file ? file.filename: null // si viene un avatar o sino null
+      avatar: file ? file.filename: null // cambiar null a nombre de archivo default , si viene un avatar o sino null
 
       /*nombreUsuario: data.nombre ? data.nombre : String(data.email).trim(),
       email: String(data.email),
@@ -45,7 +45,7 @@ module.exports = {
       avatar: null*/
     };
     users.push(newUser);
-    this.write(users)
+    this.write(users);
   },
 /*  update:function(data,file,id){
     let users = this.all();
