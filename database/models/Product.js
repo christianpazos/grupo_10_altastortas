@@ -33,8 +33,10 @@ module.exports = (sequelize, DataType) => {
         tableName: 'products'
     });
     Product.associate = ({Category}) => {
-        Product.belongsTo(Category, { as:'Category', foreignKey:"category_id"})
+        Product.belongsTo(Category, {
+            as:'Category',
+            foreignKey:"category_id"
+        })
     }
     return Product;
 }
-/* falta uniones de tablas */

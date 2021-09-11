@@ -22,4 +22,3 @@ module.exports = (Sequelize, DataType) => {
     return Product;
 
 }
-/* falta uniones de tablas */
