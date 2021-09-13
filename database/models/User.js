@@ -14,11 +14,11 @@ module.exports = (Sequelize, DataType) => {
             allowNull: false,
             unique: true,
         },
-        admin: {
+        esAdmin: {
             type: DataType.BOOLEAN,
             allowNull: false,
         },
-        password: {
+        contraseña: {
             type: DataType.STRING,
             allowNull: false,
         },
