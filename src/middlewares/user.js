@@ -2,7 +2,16 @@ const user = require("../models/usuario");
 const userModel = require("../models/usuario");
 
 
-module.exports =(req,res,next)=>{
+module.exports =
+async(req,res,next)=>{
+    try {
+        
+    } catch (error) {
+        
+    }
+}
+
+(req,res,next)=>{
     let user = null;
     if (req.cookie != undefined && req.cookie.user != undefined ){//si hay una cookie seteada
         user = userModel.one(req.cookie.user)//user va hacer igual a ese dato que se esta guardando buscado por id

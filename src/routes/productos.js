@@ -20,7 +20,7 @@ let dest = multer.diskStorage({
 const upload = multer({storage:dest});
 
 router.get("/crear",[isAdmin], productos.create);
-router.get("/:category?", productos.index);
+router.get("/prueba", productos.index);
 router.get("/detalle/:id", productos.show);
 router.get("/editar/:id",[isAdmin], productos.edit);
 router.post("/upload",[isAdmin, upload.single("imagen")],productos.save); //save usa new

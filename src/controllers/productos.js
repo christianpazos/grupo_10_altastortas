@@ -1,11 +1,27 @@
-const product = require ("../models/product")
-const category = require ("../models/category")
+const {Product,Category} = require ("../database/models");
+const {Op} = require ("sequelize");
+const {like} = Op;
+
+//const product = require ("../models/product")
+//const category = require ("../models/category")
 
 module.exports = {
-    index: (req, res) => res.render("products/list",
+    index: async(req, res) => {//async dice que adentro se van a ejecutar promesas
+        try {
+            const productos= await Category.findAll() 
+            return res.send({productos})
+        } catch (error) {
+            return res.send (error)
+        }
+    }
+    
+    
+    /*(req, res) => res.render("products/list",
     {title: "Listado de productos",
     style: null,
-    products: (req.params.category)? product.porCategoria(req.params.category) : product.allWithExtra() }),
+    products: (req.params.category)? product.porCategoria(req.params.category) : product.allWithExtra() })*/,
+    
+    
     show: (req, res) => res.render("products/detail",
     {producto:product.oneWithExtra(req.params.id),
     title: "Detalles de producto",
