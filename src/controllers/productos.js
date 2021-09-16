@@ -10,7 +10,9 @@ module.exports = {
         try {
             const productos= await Category.findAll() 
             return res.send({productos})
-        } catch (error) {
+            
+        } catch ( error) {
+            console.log(error);
             return res.send (error)
         }
     }

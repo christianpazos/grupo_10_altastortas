@@ -11,7 +11,7 @@ module.exports = (Sequelize, DataType) => {
         }
     }, {
         timestamps: false,
-        tableName: 'Categorys'
+        tableName: 'category'
     });
 Category.associate = ({Product}) => {
     Category.hasMany(Product, {
