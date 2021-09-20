@@ -9,10 +9,6 @@ module.exports = (sequelize, DataType) => {
             type:DataType.STRING,
             allowNull: false,
         },
-        category_id: {
-            type: DataType.INTEGER,
-            allowNull: false,
-        },
         imagen: {
             type: DataType.STRING,
             allowNull: false,
@@ -25,15 +21,18 @@ module.exports = (sequelize, DataType) => {
             type: DataType.STRING,
             allowNull: false,
         },
-
+        category_id: {
+            type: DataType.INTEGER,
+            allowNull: false
+        }
+        
     }, {
-        timestamps: false,
-        tableName: 'Product'
+        timestamps: false
     });
     Product.associate = ({Category}) => {
-        Product.belongsTo(Category, {
+        Product.belongsTo(Category, {//te devuelve un objeto , belongstoMnay trae una array ej color ej variantes de productos,
             as:'category',
-            foreignKey:"category_id"
+            foreignKey:'category_id'
         })
     }
     return Product;

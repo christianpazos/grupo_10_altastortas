@@ -5,7 +5,7 @@ module.exports = (Sequelize, DataType) => {
             primaryKey: true,
             autoIncrement: true
         },
-        name: {
+        nombre: {
             type:DataType.STRING,
             allowNull: false,
         }
@@ -14,7 +14,7 @@ module.exports = (Sequelize, DataType) => {
         tableName: 'category'
     });
 Category.associate = ({Product}) => {
-    Category.hasMany(Product, {
+    Category.hasMany(Product, {//devuelve un array
             as:'product',
             foreignKey:"category_id"
         })

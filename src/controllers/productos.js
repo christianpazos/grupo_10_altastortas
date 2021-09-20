@@ -8,8 +8,9 @@ const {like} = Op;
 module.exports = {
     index: async(req, res) => {//async dice que adentro se van a ejecutar promesas
         try {
-            const productos= await Category.findAll() 
-            return res.send({productos})
+            const productos= await Product.findByPk(1,{include:['category']}) 
+            const categorias= await Category.findByPk(1,{include:['product']}) 
+            return res.send({productos,categorias})
             
         } catch ( error) {
             console.log(error);
