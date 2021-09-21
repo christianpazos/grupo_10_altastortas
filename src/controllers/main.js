@@ -1,16 +1,17 @@
 //const product = require ("../models/product")
-const {product,Category} = require("../database/models")
+const {Product,Category} = require("../database/models")
 
 module.exports = {
     index: async(req,res) =>{
         try {
-            
+            //return res.send(await Product.findAll({include:['category']}))
             return res.render("home",
             {title: "home",
             style: null,
-            productos: await product.findByPk(2,{include:["category"]}) })
+            productos: await Product.findAll({include:['category']})})
         } catch (error) {
-            res.render(error)
+            console.log(error);
+            res.send(error)
         }
     }
     
@@ -22,8 +23,8 @@ module.exports = {
     productos:  product.randomProducs() })*/,
  
    // index: (req, res) => res.render("home", {title: "Home", style: null }),
-    //contact:(req, res) => res.render("contact",{title: "Contacto", style: null}),
-    //search:(req, res) => res.render("products/list"), 
+   // contact:(req, res) => res.render("contact",{title: "Contacto", style: null}),
+   //search:(req, res) => res.render("products/list"), 
  
 
 
