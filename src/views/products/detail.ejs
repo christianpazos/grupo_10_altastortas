@@ -10,17 +10,17 @@
     <nav class= "navproducto">
     <a href="/">Home</a>
     <a href="/productos">/ Productos</a>
-    <a href="/productos/detail">/<%= producto.name %></a>
+    <a href="/productos/detail">/<%= productos.name %></a>
   </nav>
   <section id="productdetail">
     <figure id= "fotoproducto">	
-      <img src="/<%= producto.imagen%>" alt="">
+      <img src="/<%= productos.imagen%>" alt="">
     </figure>
     <article>
-      <h3><%= producto.name %></h3>
+      <h3><%= productos.name %></h3>
       <p>
         <i class="fas fa-dollar-sign"></i>
-        <%= producto.precio %>
+        <%= productos.precio %>
       </p>
       <p>
         <i class="fas fa-credit-card"></i>
@@ -40,16 +40,16 @@
         </fieldset>
       </form>
       <p>
-        <%= producto.descripcion %>
+        <%= productos.descripcion %>
       </p>
-      <form action= "/productos/eliminar/<%= producto.id %>?_method=DELETE" method="POST">
+      <form action= "/productos/eliminar/<%= productos.id %>?_method=DELETE" method="POST">
         <fieldset>
           <button type= "submit">
             ELIMINAR
           </button>
         </fieldset>
       </form>
-      <form action= "/productos/editar/<%= producto.id %>" method="GET">
+      <form action= "/productos/editar/<%= productos.id %>" method="GET">
       
         <fieldset>
           <button type= "submit">

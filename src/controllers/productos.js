@@ -6,32 +6,41 @@ const {like} = Op;
 //const category = require ("../models/category")
 
 module.exports = {
-    index: async(req, res) => {//async dice que adentro se van a ejecutar promesas
+    show: async(req, res) => {
         try {
-
-
-            
-            const productos= await Product.findAll({include:['category']}) 
+            //const products= 
             //const categorias= await Category.findByPk(1,{include:['product']}) 
-            return res.send({productos})
             
-        } catch ( error) {
+            return res.render("products/list",
+            {title: "Listado de productos",
+            style: null,
+            productos: await Product.findAll({include:['category']}) 
+            });
+            //(req.params.category)? product.categorias(req.params.category) : product.allWithExtra() })
+            
+    } catch ( error) {
             console.log(error);
-            return res.render (error)
+            res.send (error)
         }
+    },
+    
+    /*(req, res) => ,    
+    show: async (req, res) => {
+    try {
+        const show= await Product.findByPk(req.params.id,{
+            include:['category']
+        });
+
+        return res.render("products/detail",{
+        productos:show,
+        title: "Detalles de producto",
+        style: "productdetail" })
+        
+    } catch (error) {
+        console.log(error);
     }
+},
     
-    
-    /*(req, res) => res.render("products/list",
-    {title: "Listado de productos",
-    style: null,
-    products: (req.params.category)? product.porCategoria(req.params.category) : product.allWithExtra() })*/,
-    
-    
-    show: (req, res) => res.render("products/detail",
-    {producto:product.oneWithExtra(req.params.id),
-    title: "Detalles de producto",
-    style: "productdetail" }),
 /*     let product = productsModel.find(req.params.id);
 
         if (product) {

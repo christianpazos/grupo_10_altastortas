@@ -8,21 +8,12 @@ module.exports = {
             return res.render("home",
             {title: "home",
             style: null,
-            productos: await Product.findAll({include:['category']})})
+            productos: await Product.findAll({include:['category']})
+            })
         } catch (error) {
-            console.log(error);
             res.send(error)
         }
-    }
-    
-    
-    
-    /*(req, res) => res.render("home",
-    {title: "home",
-    style: null,
-    productos:  product.randomProducs() })*/,
- 
-   // index: (req, res) => res.render("home", {title: "Home", style: null }),
+    },
    // contact:(req, res) => res.render("contact",{title: "Contacto", style: null}),
    //search:(req, res) => res.render("products/list"), 
  
