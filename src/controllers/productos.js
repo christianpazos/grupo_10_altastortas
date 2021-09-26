@@ -8,13 +8,15 @@ const {like} = Op;
 module.exports = {
     show: async(req, res) => {
         try {
-            //const products= 
-            //const categorias= await Category.findByPk(1,{include:['product']}) 
+            
+            const productos= await Product.findAll({include:['category']});
+            const categorias= await Category.findAll({include:['product']}) 
             
             return res.render("products/list",
             {title: "Listado de productos",
             style: null,
-            productos: await Product.findAll({include:['category']}) 
+            productos: productos,
+            categories:categorias  
             });
             //(req.params.category)? product.categorias(req.params.category) : product.allWithExtra() })
             
@@ -23,23 +25,6 @@ module.exports = {
             res.send (error)
         }
     },
-    
-    /*(req, res) => ,    
-    show: async (req, res) => {
-    try {
-        const show= await Product.findByPk(req.params.id,{
-            include:['category']
-        });
-
-        return res.render("products/detail",{
-        productos:show,
-        title: "Detalles de producto",
-        style: "productdetail" })
-        
-    } catch (error) {
-        console.log(error);
-    }
-},
     
 /*     let product = productsModel.find(req.params.id);
 
@@ -52,6 +37,29 @@ module.exports = {
                     title: 'Inexistente',
                     desc: 'El producto que buscas ya no existe, nunca existió y tal vez nunca exista.'
                 } */
+    category:async(req,res)=>{
+            try {
+                //const categories= await Category.findAll({include:['product']})
+                const category = await Category.findOne({
+                    where: {nombre: {
+                        [like] : req.params.category}
+                    }
+                })
+                
+            const categories= await Category.findByPk(1,{include:['product']}) 
+
+
+            
+            return res.render("products/categories",
+            {title: "Listado de productos",
+            style: null,
+            categories: categories
+            });
+    }catch(error){
+        console.log(error);
+    }
+},
+    
     create: (req, res) => res.render("products/create",
     {title: "Crear producto", 
     style: "formregistro"}),
@@ -76,14 +84,15 @@ module.exports = {
         return result == true ? res.redirect("/") : res.send("Error al cargar la informacion") 
     },
     
-    test: (req, res) => res.send ({
-        params: req.params, 
-        body: req.body,
-        query: req.query,
-        products: (req.params.category)? product.porCategoria(req.params.category) : product.allWithExtra(),
-    })
+    test: async(req, res) => {
+    try {
+        const productos= await Product.findAll({include:['category']})
+        const categorias= await Category.findByPk(1,{include:['product']}) 
+        return res.send({categorias, productos}) 
+    } catch (error) {
+        console.log(error);
+    }}
 }
-
 /*
  en el metodo show utilizar el metodo  oneWithExtra  del modelo de productos con el parametro del req.params.id
 */

@@ -21,11 +21,13 @@ const upload = multer({storage:dest});
 
 router.get("/crear",[isAdmin], productos.create);
 router.get("/", productos.show);
+router.get("/categories", productos.category);
 router.get("/detalle/:id", productos.show);
 router.get("/editar/:id",[isAdmin], productos.edit);
 router.post("/upload",[isAdmin, upload.single("imagen")],productos.save); //save usa new
 router.put("/editar/:id",[isAdmin, upload.single("imagen")],productos.update); //update usa edit?
 router.delete("/eliminar/:id",[isAdmin],productos.delete);
+router.get("/prueba", productos.test);
  
 
 module.exports = router
