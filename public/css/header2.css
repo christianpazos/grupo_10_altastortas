@@ -1,21 +1,21 @@
-header{
-  background-color: #CDB4DB;
+header {
+  background-color: #cdb4db;
   display: flex;
   flex-flow: row wrap;
   justify-content: center;
   width: 100vw;
 }
 
-header figure{
+header figure {
   width: 35vw;
-  margin-top: .6rem;
+  margin-top: 0.6rem;
 }
 
-header figure img{
+header figure img {
   height: 100%;
 }
 
-header form{
+header form {
   margin-top: 2.5vh;
   margin-bottom: 2.5vh;
   display: flex;
@@ -24,60 +24,60 @@ header form{
   width: 65vw;
 }
 
-header form input{
+header form input {
   border: none;
   outline: none;
-  padding: .5rem;
+  padding: 0.5rem;
   border: 0;
-  border-radius: .4rem
+  border-radius: 0.4rem;
 }
 
-header form button{
+header form button {
   border: none;
   outline: none;
-  padding: .5rem;
+  padding: 0.5rem;
   border: 0;
-  border-radius: .4rem
+  border-radius: 0.4rem;
 }
 
-header nav{
-    display: flex;
-    justify-content: space-between;
-    margin: auto;
-    font-weight: bold;
-    font-size: 2rem;
+header nav {
+  display: flex;
+  justify-content: space-between;
+  margin: auto;
+  font-weight: bold;
+  font-size: 2rem;
 }
 
-header nav a{
-  margin-left: .5rem;
-  margin-right: .5rem;
-  margin-bottom: .5rem;
-  color: #EC018A;
+header nav a {
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+  margin-bottom: 0.5rem;
+  color: #ec018a;
 }
 
-header nav{
- display: flex;
- justify-content: center;
- align-items: center;
+header nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-a{
+a {
   text-decoration: none;
 }
-@media (min-width: 320px){
-  header figure{
+@media (min-width: 320px) {
+  header figure {
     width: 90vw;
   }
-  header form{
-    width: 70vw ;
+  header form {
+    width: 70vw;
   }
-  header section{
+  header section {
     display: flex;
     justify-content: center;
     align-items: center;
     width: 40vw;
   }
-  header nav ul{
+  header nav ul {
     flex: 1 0 auto;
     display: flex;
     justify-content: space-between;
@@ -85,40 +85,40 @@ a{
 }
 
 @media (min-width: 768px) {
-  header figure{
+  header figure {
     width: 40vw;
   }
-  header form{
-    width: 50vw ;
+  header form {
+    width: 50vw;
   }
-  header form input{
-    padding: .5rem 5rem;
+  header form input {
+    padding: 0.5rem 5rem;
   }
-  header section{
+  header section {
     display: flex;
     justify-content: center;
     align-items: center;
     width: 40vw;
   }
 
-  header nav ul{
+  header nav ul {
     flex: 1 0 auto;
     display: flex;
     justify-content: space-between;
   }
 
-  header nav ul li a{
+  header nav ul li a {
     color: #000;
     margin-right: 0.5rem;
   }
 }
 
 @media (min-width: 1200px) {
-  header section i{
+  header section i {
     margin-left: 3rem;
     margin-right: 3rem;
   }
-/*     header figure{
+  /*     header figure{
     max-width: 100vw;
   } */
 }
