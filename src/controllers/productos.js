@@ -8,10 +8,8 @@ const {like} = Op;
 module.exports = {
     show: async(req, res) => {
         try {
-            
             const productos= await Product.findAll({include:['category']});
             const categorias= await Category.findAll({include:['product']}) 
-            
             return res.render("products/list",
             {title: "Listado de productos",
             style: null,
@@ -42,14 +40,10 @@ module.exports = {
                 //const categories= await Category.findAll({include:['product']})
                 const category = await Category.findOne({
                     where: {nombre: {
-                        [like] : req.params.category}
+                        [like] : Category.nombre}
                     }
                 })
-                
-            const categories= await Category.findByPk(1,{include:['product']}) 
 
-
-            
             return res.render("products/categories",
             {title: "Listado de productos",
             style: null,
@@ -88,7 +82,14 @@ module.exports = {
     try {
         const productos= await Product.findAll({include:['category']})
         const categorias= await Category.findByPk(1,{include:['product']}) 
-        return res.send({categorias, productos}) 
+        
+        const category = await Category.findOne({
+            where: {nombre: {
+                [like] : "Liviana"}
+            }
+        })
+        return res.send({category}) 
+    
     } catch (error) {
         console.log(error);
     }}
