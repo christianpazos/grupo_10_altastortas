@@ -1,19 +1,12 @@
 const fs= require('fs')
 const path= require('path')
 const { validationResult} = require ('express-validator')
-const db = require('../../database/models');
+const {User} = require('../../database/models');
 const sequelize = db.sequelize;
 const { Op } = require("sequelize");
 
-//Aqui tienen otra forma de llamar a cada uno de los modelos
-const user = db.User;
-const Genres = db.Genre;
-const Actors = db.Actor;
-
-
 //const userModel = require("./models/usuario");
 
-/* require modelo de usuarios */
 module.exports = {
     login: (req, res) => {
       res.render("users/login",{title: "Formulario de login"}
@@ -74,27 +67,39 @@ module.exports = {
       }
       },
       access: async (req, res) => {
-        
-            (req,res) => {
-              let errors = validationResult(req); //recibe esos errores
-              //return res.send(errors.length)
-              if (errors.isEmpty()){//verificar la vueltas de errores, si no hay errores entonces logearse
-                let user = userModel.findByEmail(req.body.email);//buscar el usuario por el email , input checkbox name     
-                if (req.body.remember != undefined ){//Si no marcamos el checkbox, culquier dato pero no undefine
-                    res.cookie("user",//seteamos cookie user 
-                    user.id,//guardamos esos datos
-                    {maxAge:1000*60*60*24*30}//tiempo que dure esa cookie, es un año aqui
-                    );//guardo en una cookie el user, y guardo del user, el id
-                }//lo siguiente guardamos los datos en una session
-                req.session.user = user;
-                return res.redirect("/");//redirigimos a la raiz
-              }else{
-                res.render("users/login", {
-                  title:"Access",
-                  errors:errors.mapped(), 
-                  data:req.body});
-              }//pasando a la vista los errores
-            }        
+        try {
+          let errors = validationResult(req); //recibe esos errores
+          //return res.send(errors.length)
+          if (errors.isEmpty()){//verificar la vueltas de errores, si no hay errores entonces logearse
+            try {
+              let user = User.findOne({
+                
+                where:{email:req.body.email}});//buscar el usuario por el email , input checkbox name     
+              
+              if (req.body.remember != undefined ){//Si no marcamos el checkbox, culquier dato pero no undefine
+                  
+                res.cookie("user",//seteamos cookie user 
+                user.id,//guardamos esos datos
+                {maxAge:1000*60*60*24*30}//tiempo que dure esa cookie, es un año aqui
+                );//guardo en una cookie el user, y guardo del user, el id
+              }//lo siguiente guardamos los datos en una session
+              req.session.user = user;
+              
+              return res.redirect("/");//redirigimos a la raiz
+              
+            } catch (error) {
+              console.log(error);
+            }
+          }else{
+            res.render("users/login", {
+              title:"Access",
+              errors:errors.mapped(), 
+              data:req.body});
+          }//pasando a la vista los errores
+          
+        } catch (error) {
+          console.log(error);
+        }
     },  
     logout: (req,res) => {
       req.session.destroy();
