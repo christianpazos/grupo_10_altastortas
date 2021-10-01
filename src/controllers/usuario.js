@@ -36,36 +36,33 @@ module.exports = {
         let errors = validationResult(req);//guardamos los datos , y variable para los errores
         if (errors.isEmpty()){//o .length == 0, si no hay errores
           try {
-           const newUser = await User.create({
+            const newUser = await User.create({
               nombre: req.body.nombre,
               email: req.body.email,
-              password:req.body.password,
-              admin: String(req.body.email).includes("@altastortas") || req.body.email.includes("@at") ? true: false,//si es con @digitalhose o @dh va hacer admin o no
+              contraseña:req.body.password,
+              esAdmin: String(req.body.email).includes("@altastortas") || (req.body.email).includes("@at") ? true: false,//si es con @digitalhose o @dh va hacer admin o no
               //contrase;a la encripto , cantidad de veces del intentado
               avatar: req.body.avatar
-            });
+              });
             return newUser? res.redirect("/users/login"): res.redirect("/");//despues de crear, vuelva a la pagina raiz
-          } catch (error) {
-            console.log(error);
-          }  
-        }else{//de modo contrario ir a la vista con los errores
-            if (req.file != undefined){
-              fs.unlinkSync(path.resolve(__dirname,
-              "../../public/uploads/avatar/", 
-              req.file.filename
-              )
-            )//eliminar la imagen
-          }
-          res.render("users/register", {/*mostrar en la vistas los errores*/
-            title:"Join",
-            errors:errors.mapped(),
-            data:req.body/*pasar la vieja data*/
-          });
-        }
+            } catch (error) {
+              console.log(error);
+            }  
+            }else{//de modo contrario ir a la vista con los errores
+                if (req.file != undefined){fs.unlinkSync(path.resolve(__dirname,
+                    "../../public/uploads/avatar/", 
+                    req.file.filename))//eliminar la imagen
+                      }
+                  res.render("users/register", {/*mostrar en la vistas los errores*/
+                  title:"Join",
+                  errors:errors.mapped(),
+                  data:req.body/*pasar la vieja data*/
+                  });
+            }
       } catch (error) {
         console.log(error);
       }
-      },
+    },
       access: async (req, res) => {
         try {
           let errors = validationResult(req); //recibe esos errores
@@ -119,7 +116,21 @@ module.exports = {
         
         } catch (error) {
             console.log(error);
-        }}
+        }},
+  testsave:async(req,res)=>{
+    try {
+      const newUser = await User.create({
+        nombre: req.body.nombre,
+        email: req.body.email,
+        contraseña:req.body.password,
+        esAdmin: String(req.body.email).includes("@altastortas") || (req.body.email).includes("@at") ? true: false,//si es con @digitalhose o @dh va hacer admin o no
+        //contrase;a la encripto , cantidad de veces del intentado
+        avatar: req.body.avatar
+        });
+    } catch (error) {
+      console.log(error);
+    }
+  }
   /* access: post extra - utilizar el metodo de validPassword y el metodo byEmail - guardar el usuario logeado en sesion - instalar express sesion*/
     /*save: post register - utilizar metodo create del usuario*/
 }

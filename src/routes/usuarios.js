@@ -23,12 +23,13 @@ router.get("/logout",[isLogged],usuario.logout)
 
 //Formulario de Login
 router.put("/update",[isLogged],usuario.update)
-router.post("/access"/*, [validLogin] */,usuario.access)//modificado 12/08/21 ingresa al profile despues del login, ver el action del ejs login 
+router.post("/access", [validLogin],usuario.access)//modificado 12/08/21 ingresa al profile despues del login, ver el action del ejs login 
 //Procesar el Registro
 router.post ("/save",[uploadFile.single ('avatar'),validRegister], usuario.save)
 //Formulario de Registro
 
 //test de Usuario
 router.get("/prueba", test.test);
+router.post("/prueba", test.testsave)
 
 module.exports = router
