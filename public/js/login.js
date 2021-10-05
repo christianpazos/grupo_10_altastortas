@@ -3,6 +3,7 @@ const formLogin = document.querySelector('#loginUser');
 
 let inputs = Array.from(formLogin.elements);
 inputs = inputs.filter(elemento =>elemento.getAttribute("type")!=undefined);
+console.log(inputs);
 inputs.forEach(input=>{
     input.onblur= (evento)=>{
         const target = evento.target;
@@ -11,7 +12,7 @@ inputs.forEach(input=>{
             const field = target.parentElement;//padre osea el fieldset
 
             target.classList.remove ("error")//reinicio los errores
-            feed.classList.remove("error")
+            feed.classList.remove("error")//
             feed.innerHTML = null;
 
             if(name == "nombre"){
@@ -42,7 +43,7 @@ inputs.forEach(input=>{
             }
     }
     
-    formElement.onsubmit = (evento)=>{
+    formLogin.onsubmit = (evento)=>{
         evento.preventDefault();
         const target = evento.target;
         const inputs = target.querySelectorAll("input.seccess")

@@ -35,19 +35,16 @@ module.exports = {
       try {        
         let errors = validationResult(req);//guardamos los datos , y variable para los errores
         if (errors.isEmpty()){//o .length == 0, si no hay errores
-          try {
+           
             const newUser = await User.create({
               nombre: req.body.nombre,
               email: req.body.email,
               contraseña:req.body.contraseña,
               esAdmin: String(req.body.email).includes("@altastortas") || (req.body.email).includes("@at") ? true: false,//si es con @digitalhose o @dh va hacer admin o no
               //contrase;a la encripto , cantidad de veces del intentado
-              avatar: req.body.avatar
+              avatar: req.file.filename
               });
-            return newUser? res.redirect("/users/login"): res.redirect("/");//despues de crear, vuelva a la pagina raiz
-            } catch (error) {
-              return res.send(error)
-            }  
+            return newUser? res.redirect("/"): res.redirect("/");//despues de crear, vuelva a la pagina raiz 
             }else{//de modo contrario ir a la vista con los errores
                 if (req.file != undefined){fs.unlinkSync(path.resolve(__dirname,
                     "../../public/uploads/avatar/", 

@@ -15,13 +15,6 @@
             <p> <%= errors.nombre.msg %>   </p>
         <% } %>
   </div>
-<!--   <div class="controlFormulario">
-      <input class="control" type="text" name="nombreUsuario" placeholder="Nombre de usuario" value="<%= locals.data ? data.nombreUsuario : null %>">
-      <% if (locals.errors && errors.nombreUsuario) {%>
-        <p> <%= errors.nombreUsuario.msg %>   </p>
-    <% } %>
-    </div>
-  <div class="controlFormulario"> -->
       <input class="control" type="email" name="email" placeholder="Email" value="<%= locals.data ? data.email : null %>">
       <% if (locals.errors && errors.email) {%>
         <p> <%= errors.email.msg %>   </p>
@@ -29,10 +22,10 @@
     </div>
 
   <div class="controlFormulario" id="fotoPerfil">
-      <h3>Subí una imagen para generar tu avatar</h3>
+      <!-- <h3>Subí una imagen para generar tu avatar</h3> -->
       <input type="file" name="avatar" id="Subirfoto">
       <% if (locals.errors && locals.errors.avatar) {%>
-        <p> <%= locals.errors.avatar.msg %>   </p>
+        <p> <%= errors.avatar.msg %>   </p>
     <% } %>
   </div>
   <!-- <div class="controlFormulario">
@@ -61,5 +54,5 @@
 </main>
 <!-- Footer -->
 <%- include("../includes/footer") %> 
-<script src="/public/js/register.js"></script>
+<script src="/js/register.js"></script>
 </body>
