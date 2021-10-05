@@ -8,7 +8,6 @@ module.exports= function (carpetaLoQueVenga){//cualquier carpeta despues de /pub
     });
     
     return storage;
-
 }
 
 

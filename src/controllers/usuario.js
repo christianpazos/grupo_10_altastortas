@@ -39,14 +39,14 @@ module.exports = {
             const newUser = await User.create({
               nombre: req.body.nombre,
               email: req.body.email,
-              contraseña:req.body.password,
+              contraseña:req.body.contraseña,
               esAdmin: String(req.body.email).includes("@altastortas") || (req.body.email).includes("@at") ? true: false,//si es con @digitalhose o @dh va hacer admin o no
               //contrase;a la encripto , cantidad de veces del intentado
               avatar: req.body.avatar
               });
             return newUser? res.redirect("/users/login"): res.redirect("/");//despues de crear, vuelva a la pagina raiz
             } catch (error) {
-              console.log(error);
+              return res.send(error)
             }  
             }else{//de modo contrario ir a la vista con los errores
                 if (req.file != undefined){fs.unlinkSync(path.resolve(__dirname,
@@ -65,29 +65,24 @@ module.exports = {
     },
       access: async (req, res) => {
         try {
-          let errors = validationResult(req); //recibe esos errores
-          
+          let errors = validationResult(req); 
           if (errors.isEmpty()){
             try {
               let user = await User.findOne({
-                where:{email:req.body.email}});//buscar el usuario por el email , input checkbox name     
-              
-              if (req.body.remember != undefined ){//Si no marcamos el checkbox, culquier dato pero no undefine
-                  
+                where:{email:req.body.email}});
+              if (req.body.remember != undefined ){
                 res.cookie("user",//seteamos cookie user 
                 user.id,//guardamos esos datos
-                {maxAge:1000*60*60*24*30}//tiempo que dure esa cookie, es un año aqui
-                );//guardo en una cookie el user, y guardo del user, el id
+                {maxAge:1000*60*60*24*30}
+                );
               }//lo siguiente guardamos los datos en una session
               req.session.user = user;
-              
               return res.redirect("/");//redirigimos a la raiz
-              
-            } catch (error) {
-              console.log(error);
-            }
+              } catch (error) {
+                return res.send(error)
+              }
           }else{
-            res.render("users/login", {
+              res.render("users/login", {
               title:"Access",
               errors:errors.mapped(), 
               data:req.body});

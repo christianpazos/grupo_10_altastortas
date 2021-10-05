@@ -7,7 +7,7 @@
 <!-- Main -->
     <main>
 <!-- Formularios -->
-<form action="/usuarios/access" method="POST" class="formularioLogin">
+<form action="/usuarios/access" method="POST" class="formularioLogin" id="loginUser">
   <fieldset class="controlFormulario">
     <input class="control" type="text" name="email" placeholder="Ingresar Email" required>
     <% if (locals.errors && errors.email) {%>
@@ -32,4 +32,5 @@
     </main>
 <!-- Footer -->
 <%- include("../includes/footer") %> 
+<script src="/public/js/login.js"></script>
 </body>

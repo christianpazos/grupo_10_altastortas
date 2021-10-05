@@ -9,7 +9,7 @@ const isGuest = require ("../middlewares/isGuest");
 const validRegister = require("../middlewares/validationRegister");
 const validLogin=require ('../middlewares/validationLogin');
 const storage = require("../middlewares/multerMiddleware");//esta con folder para que sea dinamico
-const uploadFile = multer({storage: storage("avatar")}); 
+const uploadFile = multer({storage: storage('avatar')}); 
 const test = require('../controllers/usuario');
 
 router.get("/login",[isGuest], usuario.login)

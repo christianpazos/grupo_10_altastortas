@@ -8,7 +8,7 @@
 <main>
 <!-- Formularios -->
 
-<form action="/usuarios/save" method="POST" class="formularioRegistro" enctype="multipart/form-data">
+<form action="/usuarios/save" method="POST" class="formularioRegistro" enctype="multipart/form-data" id="registerUser">
   <div class="controlFormulario">
       <input class="control" type="text" name="nombre" placeholder="Nombre y Apellido" value="<%= locals.data ? data.nombre : null %>">
         <% if (locals.errors && errors.nombre) {%>
@@ -31,8 +31,8 @@
   <div class="controlFormulario" id="fotoPerfil">
       <h3>Subí una imagen para generar tu avatar</h3>
       <input type="file" name="avatar" id="Subirfoto">
-      <% if (locals.errors && errors.avatar) {%>
-        <p> <%= errors.avatar.msg %>   </p>
+      <% if (locals.errors && locals.errors.avatar) {%>
+        <p> <%= locals.errors.avatar.msg %>   </p>
     <% } %>
   </div>
   <!-- <div class="controlFormulario">
@@ -61,4 +61,5 @@
 </main>
 <!-- Footer -->
 <%- include("../includes/footer") %> 
+<script src="/public/js/register.js"></script>
 </body>
