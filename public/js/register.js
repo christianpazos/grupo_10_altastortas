@@ -18,6 +18,7 @@ inputs.forEach(input=>{
             //console.log(name);
             target.classList.remove("error")//reinicio los errores
             feed.classList.remove("error")
+            feed.classList.remove("success")
             feed.innerHTML = null;
     
             if(name == "nombre"){
@@ -99,6 +100,8 @@ inputs.forEach(input=>{
         }
     }
     formRegister.onsubmit = (evento)=>{
+        formRegister.pop()
+        formRegister.pop()
         evento.preventDefault();
         const target = evento.target;
         const inputs = target.querySelectorAll("input.seccess")
