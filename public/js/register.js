@@ -1,40 +1,44 @@
 /*Capturamos el formulario*/
-const formRegister = document.querySelector('#registerUser');
+const formRegister = document.querySelector("#registerUser");
 
 /* Hacemos un array con todos los elementos */
 let inputs = Array.from(formRegister.elements);
 inputs = inputs.filter(elemento =>elemento.getAttribute("type")!=undefined);
-console.log(inputs);
+
+
 inputs.forEach(input=>{
     if(input.getAttribute("type")!="file"){//separo el evento del type text del tipo file
         input.onblur= (evento)=>{//
+
             const target = evento.target;
-            const name = target.getAttribute("nombre")
+            const name = target.getAttribute("name")
             const value = target.value//devuelve el padre del input
             const field = target.parentElement;//padre osea el fieldset
-            console.log(field);
             const feed = field.querySelector(".feed");//trae el fieldset
-            target.classList.remove ("error")//reinicio los errores
+            //console.log(name);
+            target.classList.remove("error")//reinicio los errores
             feed.classList.remove("error")
-
             feed.innerHTML = null;
     
             if(name == "nombre"){
                 if(value.length < 2 ){//minimo 2 caracteres
                     target.classList.add("error");//aca le agregar el fonde verde o rojo
                     feed.classList.add("error")
-                    feed.innerHTML = "Debe tener miimo 2 caracteres"
-    
+                    feed.innerHTML = "Debe tener minimo 2 caracteres"
+
                 }else{
                     target.classList.add("success");
                     feed.classList.add("success");
                     feed.innerHTML= "success"
+
+
                 }
             }
     
             if(name == "contraseña"){
-                const regex = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/
-                console.log(regex.test(value));
+                const regex = /(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/
+                //console.log(regex.test(value));
+                const password = inputs.find(input=>input.getAttribute('name')== "password")
                 if(!regex.test(value)){
                     target.classList.add("error");//aca le agregar el fonde verde o rojo
                     feed.classList.add("error")
@@ -60,7 +64,7 @@ inputs.forEach(input=>{
                 }
             }
             //console.clear();
-            console.log(target, name, value);
+            //console.log(target, name, value);
             //bloque de validaciones
     
     

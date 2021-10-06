@@ -9,42 +9,46 @@
 <!-- Formularios -->
 
 <form action="/usuarios/save" method="POST" class="formularioRegistro" enctype="multipart/form-data" id="registerUser">
-  <div class="controlFormulario">
-      <input class="control" type="text" name="nombre" placeholder="Nombre y Apellido" value="<%= locals.data ? data.nombre : null %>">
+  <fieldset class="controlFormulario">
+      <input class="control " type="text" name="nombre" placeholder="Nombre y Apellido" value="<%= locals.data ? data.nombre : null %>">
+      <span class="feed "></span>
         <% if (locals.errors && errors.nombre) {%>
             <p> <%= errors.nombre.msg %>   </p>
         <% } %>
-  </div>
-      <input class="control" type="email" name="email" placeholder="Email" value="<%= locals.data ? data.email : null %>">
-      <% if (locals.errors && errors.email) {%>
-        <p> <%= errors.email.msg %>   </p>
-    <% } %>
-    </div>
-
-  <div class="controlFormulario" id="fotoPerfil">
+  </fieldset>
+  <fieldset>
+    <input class="control" type="email" name="email" placeholder="Email" value="<%= locals.data ? data.email : null %>">
+    <span class="feed"></span>
+    <% if (locals.errors && errors.email) {%>
+      <p> <%= errors.email.msg %>   </p>
+  <% } %>
+  </fieldset>
+  <fieldset class="controlFormulario" id="fotoPerfil">
       <!-- <h3>Subí una imagen para generar tu avatar</h3> -->
       <input type="file" name="avatar" id="Subirfoto">
+      <span class="feed"></span>
       <% if (locals.errors && locals.errors.avatar) {%>
         <p> <%= errors.avatar.msg %>   </p>
     <% } %>
-  </div>
-  <!-- <div class="controlFormulario">
-    <div class="contenedorItems">
+  </fieldset>
+  <!-- <fieldset class="controlFormulario">
+    <fieldset class="contenedorItems">
         <input type="checkbox" name="categoryUser" value="Admin">
         <label for="admin">Admin</label>
-    </div>
+    </fieldset>
 
 
     <div class="contenedorItems">
         <input type="checkbox" name="categoryUser" value="cliente">
         <label for="cliente">Cliente</label>
     </div> -->
-  <div class="controlFormulario">
+  <fieldset class="controlFormulario">
       <input class="control" type="password" name="contraseña" placeholder="Contraseña"><br><br>
+      <span class="feed"></span>
       <% if (locals.errors && errors.contraseña) {%>
         <p> <%= errors.contraseña.msg %>   </p>
     <% } %>
-    </div>
+    </fieldset>
   <section id="contenedorBotones">
   <button class="button" type="submit">Registrar</button>
   <button class="button" type="reset">Borrar</button>
