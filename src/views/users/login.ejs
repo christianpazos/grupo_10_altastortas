@@ -10,6 +10,7 @@
 <form action="/usuarios/access" method="POST" class="formularioLogin" id="loginUser">
   <fieldset class="controlFormulario">
     <input class="control" type="text" name="email" placeholder="Ingresar Email" required>
+    <span class="feed "></span>
     <% if (locals.errors && errors.email) {%>
       <p> <%= errors.email.msg %>   </p>
   <% } %>
@@ -17,6 +18,7 @@
 
   <fieldset class="controlFormulario">
       <input class="control" type="password" name="password" placeholder="Contraseña" required>
+      <span class="feed "></span>
       <% if(locals.errors && locals.errors.password){  %>
         <span class="error"> <%= locals.errors.password.msg %> </span>
        <% }%>

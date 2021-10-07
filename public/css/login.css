@@ -1,47 +1,74 @@
-*{
-    box-sizing: border-box;
+* {
+  box-sizing: border-box;
 }
 body {
-    font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
 }
-main{
-    background-color: #dfdfdff8;
-}
-
-.formularioLogin{
-    padding: 1.2rem 1rem;
-    margin: auto;
-}
-.controlFormulario{
-    margin-bottom: 1rem;
+main {
+  background-color: #dfdfdff8;
 }
 
-.controlFormulario label{
-    margin-bottom: 1rem;
-    display: block;
+.formularioLogin {
+  padding: 1.2rem 1rem;
+  margin: auto;
+}
+.controlFormulario {
+  margin-bottom: 1rem;
 }
 
-.control{
-    width: 100%;
-    padding: .5rem;
-    border: 0;
-    border-radius: .4rem;
+.controlFormulario label {
+  margin-bottom: 1rem;
+  display: block;
 }
 
-#contenedorBotones{
-    display: flex;
-    justify-content: space-around;
-    flex-direction: row;
+.control {
+  width: 100%;
+  padding: 0.5rem;
+  border: 0;
+  border-radius: 0.4rem;
 }
 
-.button{
-    background-color: #EC018A;
-    border-radius: .4rem;
-    border: 0;
-    color: white;
-    padding: .5rem;
+#contenedorBotones {
+  display: flex;
+  justify-content: space-around;
+  flex-direction: row;
 }
 
-.button:hover{
-    background-color: #CDB3DB;
+.button {
+  background-color: #ec018a;
+  border-radius: 0.4rem;
+  border: 0;
+  color: white;
+  padding: 0.5rem;
+}
+
+.button:hover {
+  background-color: #cdb3db;
+}
+
+/* css errores y success */
+.feed.error {
+  color: red;
+}
+.feed.success {
+  color: green;
+}
+
+input.error {
+  color: red;
+}
+input.error:before {
+  position: relative;
+  left: -35px;
+  content: "✖";
+}
+
+input.success {
+  color: green;
+}
+
+input.success:before {
+  position: relative;
+  left: -35px;
+  content: "✔";
 }

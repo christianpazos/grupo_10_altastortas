@@ -4,8 +4,6 @@ const formRegister = document.querySelector("#registerUser");
 /* Hacemos un array con todos los elementos */
 let inputs = Array.from(formRegister.elements);
 inputs = inputs.filter(elemento =>elemento.getAttribute("type")!=undefined);
-
-
 inputs.forEach(input=>{
     if(input.getAttribute("type")!="file"){//separo el evento del type text del tipo file
         input.onblur= (evento)=>{//
@@ -15,7 +13,7 @@ inputs.forEach(input=>{
             const value = target.value//devuelve el padre del input
             const field = target.parentElement;//padre osea el fieldset
             const feed = field.querySelector(".feed");//trae el fieldset
-            //console.log(name);
+            console.log(field);
             target.classList.remove("error")//reinicio los errores
             feed.classList.remove("error")
             feed.classList.remove("success")
@@ -99,15 +97,18 @@ inputs.forEach(input=>{
             }
         }
     }
+    
+
     formRegister.onsubmit = (evento)=>{
-        formRegister.pop()
-        formRegister.pop()
         evento.preventDefault();
         const target = evento.target;
-        const inputs = target.querySelectorAll("input.seccess")
-        if(inputs.length >= 5){
-            alert("completa todos los campos")
+        const inputs = target.querySelectorAll("input.success")
+        console.log(inputs)
+        if(inputs.length >=3){
+            alert("Binvenido!!")//suit alert cambiar
             target.submit()
+        }else{
+            alert("completa todos los campos")
         }
     }
 })
