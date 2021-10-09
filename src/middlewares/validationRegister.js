@@ -1,5 +1,5 @@
 const {User}= require ('../database/models');
-const { body } = require ('express-validator');
+const { check,body } = require ('express-validator');
 
 module.exports = [
     body('nombre').notEmpty().withMessage('Tenés que escribir tu nombre completo').isLength({min:2}),
@@ -11,7 +11,7 @@ module.exports = [
         })
     }),
     body('contraseña').notEmpty().isLength({min:8}).withMessage('Tenés que elegir una contraseña'),
-    body('avatar').custom(async(value, { req }) => {   
+    check('avatar').custom(async(value, { req }) => {   
         let file = req.file;
         if(file === ('application/pdf' && 'application/jpg' && 'application/jpeg' && 'application/png' && 'application/gif'  )){
             throw new Error ('Tenes que subir una imagen con un formato correcto');

@@ -1,5 +1,5 @@
 /*Capturamos el formulario*/
-const formLogin = document.querySelector('#loginUser');
+const formLogin = document.querySelector("form#loginUser");
 
 let inputs = Array.from(formLogin.elements);
 inputs = inputs.filter(elemento =>elemento.getAttribute("type")!=undefined);
@@ -18,7 +18,7 @@ inputs.forEach(input=>{
 
             if(name == "email"){
                 const regex = /(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9]))\.){3}(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9])|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])/;
-                console.log(regex.test(value));
+                
                 if(!regex.test(value)){//minimo 2 caracteres
                     target.classList.add("error");//aca le agregar el fonde verde o rojo
                     feed.classList.add("error")
@@ -30,9 +30,8 @@ inputs.forEach(input=>{
                 }
             }
 
-            if(name == "password"){
+            if(name == "contraseña"){
                 const regex = /(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/;
-                console.log(regex.test(value));
                 if(!regex.test(value)){
                     target.classList.add("error");//aca le agregar el fonde verde o rojo
                     feed.classList.add("error")
@@ -44,14 +43,14 @@ inputs.forEach(input=>{
                 }
             }
     }
-    
     formLogin.onsubmit = (evento)=>{
-        formRegister.pop()
-        formRegister.pop()
+        inputs.pop()
+        inputs.pop()
+        console.log(formLogin);
         evento.preventDefault();
         const target = evento.target;
         const inputs = target.querySelectorAll("input.seccess")
-        if(inputs.length >= 2){
+        if(inputs.length <= 2){
             alert("completa todos los campos")
             target.submit()
         }

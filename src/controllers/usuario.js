@@ -1,5 +1,6 @@
 const fs= require('fs')
 const path= require('path')
+const bcrypt = require("bcrypt");
 const { validationResult} = require ('express-validator')
 const {User} = require ("../database/models");
 const { Op } = require("sequelize");
@@ -39,12 +40,12 @@ module.exports = {
             const newUser = await User.create({
               nombre: req.body.nombre,
               email: req.body.email,
-              contraseña:req.body.contraseña,
+              contraseña: bcrypt.hashSync(req.body.contraseña,10),
               esAdmin: String(req.body.email).includes("@altastortas") || (req.body.email).includes("@at") ? true: false,//si es con @digitalhose o @dh va hacer admin o no
               //contrase;a la encripto , cantidad de veces del intentado
               avatar: req.file.filename
               });
-            return newUser? res.redirect("/"): res.redirect("/");//despues de crear, vuelva a la pagina raiz 
+            return newUser? res.redirect("users/login"): false;//despues de crear, vuelva a la pagina raiz 
             }else{//de modo contrario ir a la vista con los errores
                 if (req.file != undefined){fs.unlinkSync(path.resolve(__dirname,
                     "../../public/uploads/avatar/", 
@@ -68,15 +69,12 @@ module.exports = {
               let user = await User.findOne({
                 where:{email:req.body.email}});
               if (req.body.remember != undefined ){
-                res.cookie("user",//seteamos cookie user 
-                user.id,//guardamos esos datos
-                {maxAge:1000*60*60*24*30}
-                );
-              }//lo siguiente guardamos los datos en una session
+                res.cookie("user",user.id,{maxAge:1000*60*60*24*30});
+                }//lo siguiente guardamos los datos en una session
               req.session.user = user;
-              return res.redirect("/");//redirigimos a la raiz
+              return res.redirect("/usuarios/profile");//redirigimos a la raiz
               } catch (error) {
-                return res.send(error)
+                console.log(error);
               }
           }else{
               res.render("users/login", {
@@ -114,9 +112,9 @@ module.exports = {
       const newUser = await User.create({
         nombre: req.body.nombre,
         email: req.body.email,
-        contraseña:req.body.password,
+        contraseña:req.body.contraseña,
         esAdmin: String(req.body.email).includes("@altastortas") || (req.body.email).includes("@at") ? true: false,//si es con @digitalhose o @dh va hacer admin o no
-        //contrase;a la encripto , cantidad de veces del intentado
+        
         avatar: req.body.avatar
         });
     } catch (error) {

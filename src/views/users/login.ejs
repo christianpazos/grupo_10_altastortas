@@ -17,10 +17,10 @@
   </fieldset>
 
   <fieldset class="controlFormulario">
-      <input class="control" type="password" name="password" placeholder="Contraseña" required>
+      <input class="control" type="password" name="contraseña" placeholder="Contraseña" required>
       <span class="feed "></span>
-      <% if(locals.errors && locals.errors.password){  %>
-        <span class="error"> <%= locals.errors.password.msg %> </span>
+      <% if(locals.errors && locals.errors.contraseña){  %>
+        <p> <%= errors.contraseña.msg %>   </p>
        <% }%>
   </fieldset>
   <fieldset>
