@@ -6,41 +6,41 @@
 <!-- Fin del Header -->
 <!-- Main -->
 <main>
-  <form action="/usuarios/update/<%= user.id %>?method=PUT" class="formularioRegistro" method="POST" id="profileForm">
+  <form action="/usuarios/update/<%= user.id %>?_method=PUT" class="formularioRegistro" method="POST" id="profileForm">
     <fieldset>
-      <input type="text" name="name" id="nombre" value="<%= user.nombre%>" placeholder="Nombre y Apellido">
+      <input type="text" name="name" id="nombre" value="%>" placeholder="Nombre y Apellido">
       <span class="feed "></span>
       <% if (locals.errors && errors.contraseña) {%>
         <p> <%= errors.contraseña.msg %>   </p>
-    <% } %>
+        <% } %>
     </fieldset>
     <fieldset>
       <input type="email" name="email" id="email" value="<%= user.email%>" placeholder="Email">
       <span class="feed "></span>
       <% if (locals.errors && errors.contraseña) {%>
         <p> <%= errors.contraseña.msg %>   </p>
-    <% } %>
+        <% } %>
     </fieldset>
     <fieldset>
-      <input type="password" name="lastPassword" id="lastPassword" value="<%= user.contraseña%>" placeholder="Contraseña Anterior">
+      <input type="password" name="lastPassword" id="lastPassword" value="" placeholder="Contraseña Anterior">
       <span class="feed "></span>
       <% if (locals.errors && errors.contraseña) {%>
         <p> <%= errors.contraseña.msg %>   </p>
-    <% } %>
+        <% } %>
     </fieldset>
     <fieldset>
       <input type="password" name="password" id="password" value="" placeholder="Nueva Contraseña">
       <span class="feed "></span>
       <% if (locals.errors && errors.contraseña) {%>
         <p> <%= errors.contraseña.msg %>   </p>
-    <% } %>
+        <% } %>
     </fieldset>
     <fieldset>
       <label type = "text">Actualizar</label>
       <button type="submit"><i class="fas fa-sync"></i></button>
     </fieldset>
   </form>
-  <% if(user && user.admin) {%>
+  <% if(user && user.esAdmin) {%>
       <form action="/usuarios/update/<%= user.id %>?method=PUT" method="post" enctype="multipart/form-data">
 
       <% if(user.avatar) {%>
@@ -52,11 +52,11 @@
       <input type="file" name="avatar" id="avatar">
       </fieldset>
       <% } else {%>
-      <fieldset>
-      <label for="avatar"><i class="fas fa-user"></i></label>
-      <input type="file" name="avatar" id="avatar">
-      </fieldset>
-      <% }%>
+                <fieldset>
+                <label for="avatar"><i class="fas fa-user"></i></label>
+                <input type="file" name="avatar" id="avatar">
+                </fieldset>
+                <% }%>
 
       <fieldset>
       <button type="submit"><i class="fas fa-sync"></i></button>
@@ -68,7 +68,7 @@
 
   <nav>
     <a href="/">volver <i class="fas fa-home"></i></a>
-    <a href="/user/logout">logout <i class="fas fa-power-off"></i></a>
+    <a href="/usuarios/logout">logout <i class="fas fa-power-off"></i></a>
   </nav>
   </main>
   <!-- Footer -->

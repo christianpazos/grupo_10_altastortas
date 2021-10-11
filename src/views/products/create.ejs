@@ -10,45 +10,61 @@
 <h3 class="titulares">¿Querés ingresar una nueva torta?</h3>
 <!-- Formularios -->
 
-<form action="upload" method="POST" class="formularioRegistro" enctype="multipart/form-data">
-    <div class="controlFormulario">
-      <input class="control" type="text" name="name" placeholder="Nombre de la torta" required minlength="3">
-    </div>
+<form action="/productos/upload" method="POST" class="formularioRegistro" enctype="multipart/form-data">
+    <fieldset class="controlFormulario">
+      <input class="control" type="text" name="nombre" placeholder="Nombre de la torta" required minlength="3">
+      <% if (locals.errors && errors.nombre) {%>
+        <p> <%= errors.nombre.msg %>   </p>
+    <% } %>
+    </fieldset>
 
-    <div class="controlFormulario">
-        <div class="contenedorItems">
-            <input type="radio" name="category" value="1">
+    <fieldset class="controlFormulario">
+        <fieldset class="contenedorItems">
+            <input type="radio" name="category_id" value="1">
             <label for="Fresca">Fresca</label>
-        </div>
+        </fieldset>
   
   
-        <div class="contenedorItems">
-            <input type="radio" name="category" value="2">
+        <fieldset class="contenedorItems">
+            <input type="radio" name="category_id" value="2">
             <label for="Liviana">Liviana</label>
-        </div>
+        </fieldset>
   
   
-        <div class="contenedorItems">
-            <input type="radio" name="category" value="3">
+        <fieldset class="contenedorItems">
+            <input type="radio" name="category_id" value="3">
             <label for="pesada">Pesada</label>
-        </div>
+        </fieldset>
+        <% if (locals.errors && errors.category_id) {%>
+          <p> <%= errors.category_id.msg %>   </p>
+      <% } %>
+    </fieldset>
+    
+    <fieldset class="controlFormulario" id="fotoTorta">
+        <h3>Subí una imagen de la torta a registrar</h3>
+        <input type="file" name="avatar" id="Subirfoto">
+        <% if (locals.errors && locals.errors.avatar) {%>
+          <p> <%= errors.avatar.msg %>   </p>
+      <% } %>
+    </fieldset>
 
-    <div class="controlFormulario" id="fotoTorta">
-    <h3>Subí una imagen de la torta a registrar</h3>
-    <input type="file" name="imagen" id="Subirfoto">
-    </div>
-
-    <div class="controlFormulario">
+    <fieldset class="controlFormulario">
       <input class="control" type="number" name="precio" placeholder="Precio de la torta" required minlength="4">
-    </div>
+      <% if (locals.errors && errors.precio) {%>
+        <p> <%= errors.precio.msg %>   </p>
+    <% } %>
+    </fieldset>
 
-    <div class="controlFormulario">
+    <fieldset class="controlFormulario">
       <input class="control" type="text" name="descripcion" placeholder="Descripción de la torta" required>
-    </div>
+      <% if (locals.errors && errors.descripcion) {%>
+        <p> <%= errors.descripcion.msg %>   </p>
+    <% } %>
+    </fieldset>
 
   <section id="contenedorBotones">
-  <button class="button" type="submit">Registrar Torta</button>
-  <button class="button" type="reset">Borrar</button>
+      <button class="button" type="submit">Registrar Torta</button>
+      <button class="button" type="reset">Borrar</button>
   </section>
 </form>
 <!-- Cierre del Form -->

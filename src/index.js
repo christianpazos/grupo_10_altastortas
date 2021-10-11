@@ -4,7 +4,10 @@ const app = express();
 const method = require('method-override');
 const session = require('express-session');
 const cookie = require('cookie-parser') 
+const methodOverride = require('method-override');
 
+
+app.use(methodOverride('_method'));
 
 //App Acces Public
 app.set("port", process.env.PORT || 3000);

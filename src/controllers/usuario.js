@@ -3,7 +3,7 @@ const path= require('path')
 const bcrypt = require("bcrypt");
 const { validationResult} = require ('express-validator')
 const {User} = require ("../database/models");
-const { Op } = require("sequelize");
+
 
 //const userModel = require("./models/usuario");
 
@@ -36,7 +36,7 @@ module.exports = {
       try {        
         let errors = validationResult(req);//guardamos los datos , y variable para los errores
         if (errors.isEmpty()){//o .length == 0, si no hay errores
-            const newUser = await User.create({
+            await User.create({
               nombre: req.body.nombre,
               email: req.body.email,
               contraseña: bcrypt.hashSync(req.body.contraseña,10),
@@ -44,7 +44,7 @@ module.exports = {
               //contrase;a la encripto , cantidad de veces del intentado
               avatar: req.file.filename
               });
-            res.redirect("/usuarios/login");//despues de crear, pag login 
+            //despues de crear, pag login 
             }else{//de modo contrario ir a la vista con los errores
                 if (req.file != undefined){fs.unlinkSync(path.resolve(__dirname,
                     "../../public/uploads/avatar/", 
@@ -88,13 +88,14 @@ module.exports = {
     },  
     logout: (req,res) => {
       req.session.destroy();
-      res.cookie("user",null, {maxAge:0});
-        res.redirect("/");
+      res.cookie("user",null, {maxAge:1});
+        return res.redirect("/");
       },  
     update: async (req,res) => {
-      let user = await User.findOne(req.params.id);
-      try {
-        User.update({
+      await User.findOne({
+        where: {id:req.params.id}}).then(()=>{
+        console.log(user)
+         User.update({
           nombre: req.body.nombre,
           email: req.body.email,
           contraseña: bcrypt.hashSync(req.body.contraseña,10),
@@ -105,12 +106,9 @@ module.exports = {
       let user = User.findOne({
         where:{email:req.body.email}});//
       req.session.user = user;
-      return res.redirect("/")
-        
-      } catch (error) {
-        console.log(error)
-      }
+      return res.redirect("/") 
 
+      })
     },
   test: async(req, res) => {
         try {

@@ -1,5 +1,4 @@
 <%- include("../includes/head") %> 
-
 <body>
 <!-- Header -->
 <%- include("../includes/header") %> 
@@ -10,14 +9,14 @@
     <nav class= "navproducto">
     <a href="/">Home</a>
     <a href="/productos">/ Productos</a>
-    <a href="/productos/detail">/<%= productos.name %></a>
+    <a href="/productos/detail">/<%= productos.id %></a>
   </nav>
   <section id="productdetail">
     <figure id= "fotoproducto">	
-      <img src="/<%= productos.imagen%>" alt="">
+      <img src="/<%= productos.avatar%>" alt="">
     </figure>
     <article>
-      <h3><%= productos.name %></h3>
+      <h3><%= productos.nombre %></h3>
       <p>
         <i class="fas fa-dollar-sign"></i>
         <%= productos.precio %>
