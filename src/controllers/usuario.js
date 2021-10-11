@@ -36,7 +36,6 @@ module.exports = {
       try {        
         let errors = validationResult(req);//guardamos los datos , y variable para los errores
         if (errors.isEmpty()){//o .length == 0, si no hay errores
-           
             const newUser = await User.create({
               nombre: req.body.nombre,
               email: req.body.email,
@@ -45,7 +44,7 @@ module.exports = {
               //contrase;a la encripto , cantidad de veces del intentado
               avatar: req.file.filename
               });
-            return newUser? res.redirect("users/login"): false;//despues de crear, vuelva a la pagina raiz 
+            res.redirect("/usuarios/login");//despues de crear, pag login 
             }else{//de modo contrario ir a la vista con los errores
                 if (req.file != undefined){fs.unlinkSync(path.resolve(__dirname,
                     "../../public/uploads/avatar/", 
@@ -72,7 +71,7 @@ module.exports = {
                 res.cookie("user",user.id,{maxAge:1000*60*60*24*30});
                 }//lo siguiente guardamos los datos en una session
               req.session.user = user;
-              return res.redirect("/usuarios/profile");//redirigimos a la raiz
+              return res.redirect(`/usuarios/profile/${user.id}`);//redirigimos a la raiz
               } catch (error) {
                 console.log(error);
               }
@@ -92,13 +91,27 @@ module.exports = {
       res.cookie("user",null, {maxAge:0});
         res.redirect("/");
       },  
-    update: (req,res) => {
-      User.update(req.body,null);
-      delete req.session.user;//elimino la sesion previa
-    let user = userModel.findByEmail(req.body.email);//
-    req.session.user = user;
-    return res.redirect("/")
-  },
+    update: async (req,res) => {
+      let user = await User.findOne(req.params.id);
+      try {
+        User.update({
+          nombre: req.body.nombre,
+          email: req.body.email,
+          contraseña: bcrypt.hashSync(req.body.contraseña,10),
+          esAdmin: String(req.body.email).includes("@altastortas") || (req.body.email).includes("@at") ? true: false,//si es con @digitalhose o @dh va hacer admin o no
+          avatar: req.file.filename
+        });
+        delete req.session.user;//elimino la sesion previa
+      let user = User.findOne({
+        where:{email:req.body.email}});//
+      req.session.user = user;
+      return res.redirect("/")
+        
+      } catch (error) {
+        console.log(error)
+      }
+
+    },
   test: async(req, res) => {
         try {
             const prueba= await User.findAll()

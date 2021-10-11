@@ -7,3 +7,90 @@ body {
 main {
   background-color: #a2d2ff;
 }
+
+.formularioRegistro {
+  padding: 1.2rem 1rem;
+  margin: auto;
+}
+.controlFormulario {
+  margin-bottom: 1rem;
+}
+.controlFormulario label {
+  margin-bottom: 1rem;
+  display: block;
+}
+.control {
+  width: 100%;
+  padding: 0.5rem;
+  border: 0;
+  border-radius: 0.4rem;
+}
+.perfilDeUsuaro {
+  display: flex;
+  margin-top: 0.3rem;
+}
+.controlFormulario div {
+  margin: 0rem 1rem;
+}
+.controlFormulario div label {
+  margin-left: 1rem;
+}
+
+#fotoPerfil h3 {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+}
+#fotoPerfil input {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 0.5rem;
+}
+#fotoPerfil {
+  margin-bottom: 2rem;
+}
+#Subirfoto {
+  font-size: 0.9rem;
+}
+
+#contenedorBotones {
+  display: flex;
+  justify-content: space-around;
+  flex-direction: row;
+}
+
+.button {
+  background-color: #03264c;
+  border-radius: 0.4rem;
+  border: 0;
+  color: white;
+  padding: 0.5rem;
+}
+
+/* css errores y success */
+.feed.error {
+  color: red;
+}
+.feed.success {
+  color: green;
+}
+
+input.error {
+  color: red;
+}
+input.error:before {
+  position: relative;
+  left: -35px;
+  content: "✖";
+}
+
+input.success {
+  color: green;
+}
+
+input.success:before {
+  position: relative;
+  left: -35px;
+  content: "✔";
+}

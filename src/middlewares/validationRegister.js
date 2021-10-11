@@ -6,17 +6,20 @@ module.exports = [
     body('email').notEmpty().isEmail().withMessage('Tenés que escribir un email válido').custom(async (value)=>{
         return await User.findOne({where:{email:value}}).then(user => {
             if (user) {
-                return Promise.reject('E-mail already in use');
+                return Promise.reject('Este email ya esta en uso :( ');
             }
         })
     }),
     body('contraseña').notEmpty().isLength({min:8}).withMessage('Tenés que elegir una contraseña'),
-    check('avatar').custom(async(value, { req }) => {   
-        let file = req.file;
-        if(file === ('application/pdf' && 'application/jpg' && 'application/jpeg' && 'application/png' && 'application/gif'  )){
-            throw new Error ('Tenes que subir una imagen con un formato correcto');
-            }else{
-                return true;
-            }}
-    )
+    body('avatar').custom(async(value, { req }) => {  
+        const exceptedFileType = ['png','gif','jpg','jpeg']
+        if (req.file==undefined){
+            return Promise.reject('Debes subir una imagen');
+        }
+        const fileExtension = req.file.mimetype.split('/').pop()
+        if(!exceptedFileType.includes(fileExtension)){
+            return Promise.reject('Extension de archivos no permitida');
+        }
+    }
+    ).withMessage("Debes Subir una imagen con extension jpg, gif, jpeg y/o png ")
 ]

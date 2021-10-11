@@ -6,29 +6,42 @@
 <!-- Fin del Header -->
 <!-- Main -->
 <main>
-  <form action="/usuario/update?method=PUT" class="formularioRegistro" method="post">
+  <form action="/usuarios/update/<%= user.id %>?method=PUT" class="formularioRegistro" method="POST" id="profileForm">
     <fieldset>
-      <label for="name">Nombre y Apellido</label>
-      <input type="text" name="name" id="nombre" value="<%= user.nambre%>">
+      <input type="text" name="name" id="nombre" value="<%= user.nombre%>" placeholder="Nombre y Apellido">
+      <span class="feed "></span>
+      <% if (locals.errors && errors.contraseña) {%>
+        <p> <%= errors.contraseña.msg %>   </p>
+    <% } %>
     </fieldset>
     <fieldset>
-      <label for="email">Email</label>
-      <input type="email" name="email" id="email" value="<%= user.email%>">
+      <input type="email" name="email" id="email" value="<%= user.email%>" placeholder="Email">
+      <span class="feed "></span>
+      <% if (locals.errors && errors.contraseña) {%>
+        <p> <%= errors.contraseña.msg %>   </p>
+    <% } %>
     </fieldset>
     <fieldset>
-      <label for="lastPassword">Last Password</label>
-      <input type="password" name="lastPassword" id="lastPassword" value="">
+      <input type="password" name="lastPassword" id="lastPassword" value="<%= user.contraseña%>" placeholder="Contraseña Anterior">
+      <span class="feed "></span>
+      <% if (locals.errors && errors.contraseña) {%>
+        <p> <%= errors.contraseña.msg %>   </p>
+    <% } %>
     </fieldset>
     <fieldset>
-      <label for="password">New Password</label>
-      <input type="password" name="password" id="password" value="">
+      <input type="password" name="password" id="password" value="" placeholder="Nueva Contraseña">
+      <span class="feed "></span>
+      <% if (locals.errors && errors.contraseña) {%>
+        <p> <%= errors.contraseña.msg %>   </p>
+    <% } %>
     </fieldset>
     <fieldset>
+      <label type = "text">Actualizar</label>
       <button type="submit"><i class="fas fa-sync"></i></button>
     </fieldset>
   </form>
   <% if(user && user.admin) {%>
-      <form action="/user/avatar?method=PUT" method="post" enctype="multipart/form-data">
+      <form action="/usuarios/update/<%= user.id %>?method=PUT" method="post" enctype="multipart/form-data">
 
       <% if(user.avatar) {%>
       <figure id="avatarPreview">
@@ -60,5 +73,6 @@
   </main>
   <!-- Footer -->
   <%- include("../includes/footer") %> 
+  <script src="/js/profile.js"></script>
 </body>
 </html>
