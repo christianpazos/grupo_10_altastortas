@@ -76,19 +76,17 @@ module.exports = {
             if (errors.isEmpty()){
                 let result = await Product.create({
                     nombre: req.body.nombre,
-                    precio: req.body.email,
+                    precio: req.body.precio,
                     descripcion: req.body.descripcion,
                     category_id: req.body.category_id,
-                    avatar: req.file.filename
+                    imagen: req.file.filename
                     })
                     return result?res.redirect("productos/list"): 
-                    res.render("products/create", {/*mostrar en la vistas los errores*/
+                    res.render("products/create", {
                         title:"Products",
                         errors:errors.mapped(),
-                        data:req.body/*pasar la vieja data*/
+                        data:req.body
                         });
-                    
-                    //poner la lista de productos
                 }else{//de modo contrario ir a la vista con los errores
                     /* if (req.file != undefined){fs.unlinkSync(path.resolve(__dirname,
                         "../../public/uploads/avatar/", 
@@ -137,15 +135,4 @@ module.exports = {
         console.log(error);
     }}
 }
-/*
- en el metodo show utilizar el metodo  oneWithExtra  del modelo de productos con el parametro del req.params.id
-*/
-
-/* 
- en metdo index verificar si llega el parametro en el req.parmas.category 
-  y en caso de exista utilizar el metodo allWithExtra con un flitro por el nombre de la categoria del producto
-  sino utilizar el metodo allWithExtra sin filtro 
-
-
-  */
 
