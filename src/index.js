@@ -10,7 +10,7 @@ const methodOverride = require('method-override');
 app.use(methodOverride('_method'));
 
 //App Acces Public
-app.set("port", process.env.PORT || 3000);
+app.set("port", process.env.PORT || 3002);
 app.listen(app.get("port"), () => console.log ("Server on http://localhost:"+app.get("port")));
 //App View
 app.set("view engine", "ejs");
