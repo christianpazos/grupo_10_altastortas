@@ -132,6 +132,4 @@ module.exports = {
       console.log(error);
     }
   }
-  /* access: post extra - utilizar el metodo de validPassword y el metodo byEmail - guardar el usuario logeado en sesion - instalar express sesion*/
-    /*save: post register - utilizar metodo create del usuario*/
 }
