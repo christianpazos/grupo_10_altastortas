@@ -8,20 +8,22 @@
 <main>
   <!-- Section -->
   <nav id="categorias">
-    <% category.forEach(categorias => { %>
-        <a href="/products/categories/"><%= categorias.nombre %></a>
+    <% categories.forEach(categorie => { %>
+        <a href="/productos/categories/<%= categorie.id %>"><%= categorie.nombre %></a>
         <% }) %> 
   </nav>
 <section class="productos">
   <h3 class="titulares">¡No llegues a esa ocasión especial sin una SUPER TORTA!</h3>
 
-  <% categories.forEach(categoria => { %>
+  <% productos.forEach(categoria => { %>
     <article>
-            <figure><img src="/<%= categoria.product[0].imagen%>" alt=""></figure>
+            <figure><img src="/<%= categoria.imagen%>" alt=""></figure>
             <section>
-              <h3 class="descripciones"> <%= categoria.product[0].nombre %></h3>
-              <p class="precios"> $<%= categoria.product[0].precio %></p>
-              <a href='/productos/detalle/<%= categoria.product[0].id %>'  class="botonproductos">Ver más info</a>
+              <h3 class="descripciones"> <%= categoria.nombre %></h3>
+              <p class="precios"> $<%= categoria.precio %></p>
+              
+              <a href='/productos/detalle/<%= categoria.id %>'  class="botonproductos">Ver más info</a>
+
             </section>
     </article>        
   <% }) %> 

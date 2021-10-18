@@ -50,20 +50,21 @@ module.exports = {
     }, 
     category:async(req,res)=>{
             try {
-                const productos= await Product.findAll({include:['category']});
+                const productos= await Product.findAll({where:{category_id:req.params.id}});
                 const categorias= await Category.findAll({include:['product']}) 
                 const category = await Category.findAll({include:['product']},{
                      where: {id: {
                         [like] : {category_id:req.params.id}}
                     } 
                 })
-                console.log(category)
+                //console.log(category)
+                console.log(productos)
                 let categorys= category.product
-            return res.render("products/list",
+            return res.render("products/categories",
             {title: "Listado de productos",
             style: null,
-            productos: categorys,
-            categories:categorias  
+            productos: productos,
+            categories:category  
             
             })
             ;
