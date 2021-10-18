@@ -8,4 +8,5 @@ router.get('/productos', apiController.productos);
 router.get('/productos/:id', apiController.productosId);
 router.get('/categorias', apiController.category);
 router.get('/categorias/:id', apiController.categoryId);
+router.get('/lastProduct', apiController.lastProduct);
 module.exports = router;

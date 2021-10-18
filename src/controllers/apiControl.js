@@ -1,5 +1,6 @@
 const {User, Product, Category} = require('../database/models');
-
+const {Op} = require ("sequelize");
+const {LIMIT} = Op;
 
 const controller = {
     users:async (req,res)=>{
@@ -69,7 +70,8 @@ const controller = {
             //let sumatoria= Category.sum('precio');
             let data=Category.findAll({include:['product']},{
                 order:[['id','DESC']],
-                attributes:['id','nombre','category_id']
+                attributes:['id','nombre','category_id'],
+                
             })
             Promise.all([/* sumatoria */data]).then(([/* promedio */categorias])=>{
                 
@@ -93,6 +95,30 @@ const controller = {
                 where:{id:req.params.id}}).then((categorias)=>{
                     categorias!=null?res.send(categorias):res.send("No se encontro esa Categoria :(")
                 })
-            }
+    },
+    lastProduct:async (req,res)=>{
+        try {
+            //let sumatoria= Product.sum('precio');
+            let data=Product.findAll({
+                order:[['id','DESC']],
+                include:['category'],
+                attributes:['id','nombre','imagen','precio','descripcion','category_id'],
+                limit:1
+            })
+            Promise.all([ /* sumatoria  ,*/data]).then(([/* promedio ,*/producto])=>{
+                let resul={
+                    general:{
+                        url:"/apis/productos",//preguntar a edu 
+                        ultimoProducto:producto.length,
+                        //totalPrecio:promedio
+                    },
+                    data:producto
+                } 
+                return res.send(resul);
+            })
+        }catch (error) {
+            console.log(error);
+            
+        }}
 }
 module.exports= controller

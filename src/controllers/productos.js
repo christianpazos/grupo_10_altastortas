@@ -26,7 +26,7 @@ module.exports = {
     },
     detalle:async(req,res)=>{
         try {
-            let product = Product.findByPk({
+            let product = await Product.findOne({
                 where:{id:req.params.id}});
             if (product) {
             res.render('products/detail',{
@@ -35,6 +35,7 @@ module.exports = {
             productos: product,
             //categories:categorias  
             });
+            console.log(product)
             } else {
             res.render('products/404', { 
             message: {
@@ -84,19 +85,19 @@ module.exports = {
                     precio: req.body.precio,
                     descripcion: req.body.descripcion,
                     category_id: req.body.category_id,
-                    imagen: req.file.filename
+                    imagen: "uploads/products/"+ req.file.filename
                     })
-                    return result?res.redirect("productos/list"): 
+                    return result?res.redirect("/"): 
                     res.render("products/create", {
                         title:"Products",
                         errors:errors.mapped(),
                         data:req.body
                         });
                 }else{//de modo contrario ir a la vista con los errores
-                    /* if (req.file != undefined){fs.unlinkSync(path.resolve(__dirname,
+                     if (req.file != undefined){fs.unlinkSync(path.resolve(__dirname,
                         "../../public/uploads/avatar/", 
                         req.file.filename))//eliminar la imagen
-                          } */
+                        } 
                       res.render("products/create", {/*mostrar en la vistas los errores*/
                       title:"Products",
                       errors:errors.mapped(),
@@ -132,14 +133,18 @@ module.exports = {
                 where:{id:req.params.id}}) */
 
             let errors = validationResult(req)
+            let edit = await Product.findByPk(req.params.id,{
+                include:['category']
+            })
+            console.log(edit)
             if (errors.isEmpty()){
-                let result = await Product.update({where:{id:req.params.id}},{
+                let result = await Product.update({
                     nombre: req.body.nombre,
                     precio: req.body.precio,
                     descripcion: req.body.descripcion,
                     category_id: req.body.category_id,
-                    imagen: req.file.filename
-                    })
+                    imagen: "uploads/products/"+ req.file.filename
+                    },{where:{id:edit.id}})
                     console.log(result)
                     return result?res.redirect("products/edit"): 
                     res.render("products/create", {
@@ -148,16 +153,16 @@ module.exports = {
                         data:req.body
                         });
                 }else{//de modo contrario ir a la vista con los errores
-                    /* if (req.file != undefined){fs.unlinkSync(path.resolve(__dirname,
+                        if (req.file != undefined){fs.unlinkSync(path.resolve(__dirname,
                         "../../public/uploads/avatar/", 
                         req.file.filename))//eliminar la imagen
-                          } */
-                      res.render("products/edit", {/*mostrar en la vistas los errores*/
-                      title:"Products",
-                      errors:errors.mapped(),
-                      data:req.body/*pasar la vieja data*/
-                      });
-                      console.log(result)
+                        }
+                        res.render("products/edit", {/*mostrar en la vistas los errores*/
+                        title:"Products",
+                        errors:errors.mapped(),
+                        data:req.body/*pasar la vieja data*/
+                        });
+                        console.log(result)
                 }
 
                 } catch (error) {

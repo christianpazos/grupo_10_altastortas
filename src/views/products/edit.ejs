@@ -10,7 +10,7 @@
 <h3 class="titulares">¿Querés modificar alguna torta?</h3>
 <!-- Formularios -->
 
-<form action="/productos/editar/<%= productos.id %>?_method=PUT" method="PUT" class="formularioRegistro" enctype="multipart/form-data">
+<form action="/productos/editar/<%= productos.id %>?_method=PUT" method="POST" class="formularioRegistro" enctype="multipart/form-data">
     
   <fieldset class="controlFormulario">
       <input class="control" type="text" name="nombre" value="<%= productos.nombre %>">
@@ -32,18 +32,18 @@
     <fieldset class="controlFormulario" id="fotoTorta">
     <h3>Foto actual del producto</h3>
     <figure>
-      <img src="/<%=productos.imagen%>" alt="imagen BANANASPLIT">
+      <img src="/<%=productos.imagen%>" alt="imagen BANANASPLIT" value="">
     </figure>
     <h4>Subir una nueva imagen?</h4>
-      <input type="file" name="imagen" id="Subirfoto" value="<%= locals.data ? data.imagen : null %>">
+      <input type="file" name="products" id="Subirfoto" >
     </fieldset>
 
     <fieldset class="controlFormulario">
-      <input class="control" type="number" name="precio" value="<%= locals.data ? data.precio : null %>">
+      <input class="control" type="number" name="precio" value="<%= locals.data ? data.precio :  productos.precio  %>">
     </fieldset>
 
     <fieldset class="controlFormulario">
-      <input class="control" type="text" name="descripcion" value="<%= locals.data ? data.descripcion : null %>">
+      <input class="control" type="text" name="descripcion" value="<%= locals.data ? data.descripcion :  productos.descripcion %>">
     </fieldset>
 
   <section id="contenedorBotones">
