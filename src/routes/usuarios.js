@@ -22,7 +22,7 @@ router.get("/logout",[isLogged],controller.logout)
 //router.delete ()
 
 //Formulario de Login
-router.put("/update/:id",[isLogged],controller.update)
+router.put("/update/:id",[uploadFile.single ('avatar'),isLogged],controller.update)
 router.post("/access", [validLogin],controller.access)//modificado 12/08/21 ingresa al profile despues del login, ver el action del ejs login 
 //Procesar el Registro
 router.post ("/save",[uploadFile.single ('avatar'),validRegister], controller.save)

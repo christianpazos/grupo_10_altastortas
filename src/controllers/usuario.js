@@ -42,7 +42,7 @@ module.exports = {
               contraseña: bcrypt.hashSync(req.body.contraseña,10),
               esAdmin: String(req.body.email).includes("@altastortas") || (req.body.email).includes("@at") ? true: false,//si es con @digitalhose o @dh va hacer admin o no
               //contrase;a la encripto , cantidad de veces del intentado
-              avatar: 'uploads/avatar'+req.file.filename
+              avatar: 'uploads/avatar'+ req.file.filename
               });
             //despues de crear, pag login 
             }else{//de modo contrario ir a la vista con los errores
@@ -92,23 +92,23 @@ module.exports = {
         return res.redirect("/");
       },  
     update: async (req,res) => {
-      await User.findOne({
-        where: {id:req.params.id}}).then(()=>{
-        console.log(user)
-         User.update({
+      let errors = validationResult(req)
+      let edit = await User.findByPk(req.params.id)
+      if (errors.isEmpty()){
+        let result = await User.update({
           nombre: req.body.nombre,
           email: req.body.email,
           contraseña: bcrypt.hashSync(req.body.contraseña,10),
           esAdmin: String(req.body.email).includes("@altastortas") || (req.body.email).includes("@at") ? true: false,//si es con @digitalhose o @dh va hacer admin o no
-          avatar: req.file.filename
-        });
+          avatar: 'uploads/avatar/'+ req.file.filename
+        },{where:{id:edit.id}});
         delete req.session.user;//elimino la sesion previa
       let user = User.findOne({
         where:{email:req.body.email}});//
       req.session.user = user;
       return res.redirect("/") 
 
-      })
+      }
     },
   test: async(req, res) => {
         try {

@@ -137,7 +137,7 @@ module.exports = {
             let edit = await Product.findByPk(req.params.id,{
                 include:['category']
             })
-            console.log(edit)
+          
             if (errors.isEmpty()){
                 let result = await Product.update({
                     nombre: req.body.nombre,
@@ -146,7 +146,7 @@ module.exports = {
                     category_id: req.body.category_id,
                     imagen: "uploads/products/"+ req.file.filename
                     },{where:{id:edit.id}})
-                    console.log(result)
+                    
                     return result?res.redirect("products/edit"): 
                     res.render("products/create", {
                         title:"Products",
