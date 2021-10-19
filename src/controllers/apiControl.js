@@ -14,9 +14,7 @@ const controller = {
             }).then(users=>{
                 let resul={
                     general:{
-                        url:"/apis/users",
-                        cantidad:users.length
-                    },
+                    url:"/apis/users",cantidad:users.length},
                     data:users
                 }
                 res.send(resul);

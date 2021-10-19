@@ -34,7 +34,7 @@
               <% } %>
     </fieldset>
     <fieldset>
-            <input type="password" name="lastPassword" id="lastPassword" value="<%= user.contraseña%>" placeholder="Contraseña Anterior">
+            <input type="password" name="lastPassword" id="lastPassword" value="" placeholder="Contraseña Anterior">
             <span class="feed "></span>
             <% if (locals.errors && errors.contraseña) {%>
               <p> <%= errors.contraseña.msg %>   </p>

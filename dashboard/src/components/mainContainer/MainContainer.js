@@ -21,9 +21,7 @@ function MainContainer() {
                 </div>
                 <div className="row">
                     <LastProduct />
-
                     <ProductsCategories/>
-                   
                 </div>
             </div>
         </React.Fragment>
