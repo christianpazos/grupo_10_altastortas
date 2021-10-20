@@ -1,130 +1,123 @@
-*{
-    margin: 0px;
-    padding: 0px;
-    box-sizing: border-box;
-    }
-
-  body{
-    font-family: 'Roboto Slab', sans-serif;
-    background-color: #FFC8DD;
-  }
-  html{
-     overflow-x: hidden;
-    width: 100vw;
-  }
-  
-  img{
-    max-width: 100%;
-    margin-bottom: 1rem;
-  }
-  
-  .productos{
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: center;
-  }
-
-  .botonproductos{
-    text-align:center;
-    text-decoration: none;
-    font-family: 'Helvetica Neue', Helvetica, sans-serif;
-    font-size: 1.5rem;
-    display:inline-block;
-    color: rgb(0, 0, 0);
-    background: #cdb4db;
-    padding: 15px 30px;
-    white-space: nowrap;
-    -webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
-    border-radius: 5px;
-    margin: 10px 5px;
-    -webkit-transition: all 0.2s ease-in-out;
-    -ms-transition: all 0.2s ease-in-out;
-    -moz-transition: all 0.2s ease-in-out;
-    -o-transition: all 0.2s ease-in-out;
-    transition: all 0.2s ease-in-out;
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
 }
 
-  
-  article{
-    width: 90vw;
-    padding: 1rem;
-    background: #FFC8DD;
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: center;
-  
-  }
-  
-  article figure{
-    border-bottom: .05rem solid #666;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-  }
-
-  .titulares{
-    font-size: 1.5rem;
-    width: 100vw;
-    font-weight: bold;
-    display: flex;
-    justify-content: center;
-    margin: 2rem 0rem;
-    color: #000000;
-    text-align: center;
-  }
-  
-
-.precios{
-    font-size: 1.1rem;
-    width: 30%;
-    padding-right: 5rem;
-  }
-  
-  .vermas{
-    width: 55%;
-    font-size: 1rem;
-    color: #000000;
-    margin-top: .5rem;
-  }
-  
-  .descripciones{
-    font-size: 1rem;
-    width: 100%;
-    font-weight: bolder;
-    color: #000000;
-  }
-  
-
-  
-  @media (max-width: 360px) {
-
+body {
+  font-family: "Roboto Slab", sans-serif;
+  background-color: #ffc8dd;
+}
+html {
+  overflow-x: hidden;
+  width: 100vw;
 }
 
-  @media (min-width: 361px) {
-      .descripciones{
-          display: flex;
-      }
-      main article{
-        box-shadow: 0 0 1rem 0 rgba( 20,20,20,0.3);
-      }
+img {
+  width: 100%;
+  margin-bottom: 1rem;
+}
 
+.productos {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+}
+
+.botonproductos {
+  text-align: center;
+  text-decoration: none;
+  font-family: "Helvetica Neue", Helvetica, sans-serif;
+  font-size: 1.5rem;
+  display: inline-block;
+  color: rgb(0, 0, 0);
+  background: #cdb4db;
+  padding: 15px 30px;
+  white-space: nowrap;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  margin: 10px 5px;
+  -webkit-transition: all 0.2s ease-in-out;
+  -ms-transition: all 0.2s ease-in-out;
+  -moz-transition: all 0.2s ease-in-out;
+  -o-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+}
+
+article {
+  width: 90vw;
+  padding: 1rem;
+  background: #ffc8dd;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+}
+
+article figure {
+  border-bottom: 0.05rem solid #666;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.titulares {
+  font-size: 1.5rem;
+  width: 100vw;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  margin: 2rem 0rem;
+  color: #000000;
+  text-align: center;
+}
+
+.precios {
+  font-size: 1.1rem;
+  width: 30%;
+  padding-right: 5rem;
+}
+
+.vermas {
+  width: 55%;
+  font-size: 1rem;
+  color: #000000;
+  margin-top: 0.5rem;
+}
+
+.descripciones {
+  font-size: 1rem;
+  width: 100%;
+  font-weight: bolder;
+  color: #000000;
+}
+
+@media (max-width: 360px) {
+}
+
+@media (min-width: 361px) {
+  .descripciones {
+    display: flex;
   }
+  main article {
+    box-shadow: 0 0 1rem 0 rgba(20, 20, 20, 0.3);
+  }
+}
 
-  @media (min-width: 768px) {
-    main{
-        display: flex;
-        flex-wrap: wrap;
-      }
-      main article{
-        width: 50%;
-      }
+@media (min-width: 768px) {
+  main {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  main article {
+    width: 50%;
+  }
 }
 
 @media (min-width: 1200px) {
-      main article{
-        width: 25%;
-      }
+  main article {
+    width: 25%;
+  }
 }
 #categorias {
   width: 100%;
@@ -134,7 +127,7 @@
   flex-wrap: wrap;
 }
 
-#categorias a{
+#categorias a {
   margin: 1rem 1rem;
 }
 /* 

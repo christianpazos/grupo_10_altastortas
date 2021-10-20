@@ -24,12 +24,12 @@
   <% } %>
   </fieldset>
   <fieldset class="controlFormulario" id="fotoPerfil">
-      <!-- <h3>Subí una imagen para generar tu avatar</h3> -->
-      <input type="file" name="avatar" id="Subirfoto">
-      <span class="feed"></span>
-      <% if (locals.errors && locals.errors.avatar) {%>
+      <img class="imgUser" src="/uploads/avatar/default_user.png" alt="imagen de usuario" >
+        <input type="file" name="avatar" id="Subirfoto">
+        <span class="feed"></span>
+        <% if (locals.errors && locals.errors.avatar) {%>
         <p> <%= errors.avatar.msg %>   </p>
-    <% } %>
+        <% } %>
   </fieldset>
   <!-- <fieldset class="controlFormulario">
     <fieldset class="contenedorItems">

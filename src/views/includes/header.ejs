@@ -30,8 +30,8 @@
           </a> <br><br>
           <h1>Welcome! <%= user.nombre %>
           <% if (user.esAdmin){ %>
-            <a href="/productos/crear"> <i class="fas fa-pencil-alt"></i></a><br><br>
-            <i class="fas fa-user-edit"></i>
+            <a href="/productos/crear"> <i class="fas fa-pencil-alt"></i></a>
+            <a href="/usuarios/listado" ><i class="fas fa-user-edit"></i></a>
             
           <% } %>           
           <% }else{ %>
@@ -40,7 +40,7 @@
               <i class="fas fa-user-plus"></i><br><br>
             </a>
   
-            <a href="/contacto">
+            <a href="/">
               <i class="fas fa-comment-alt"></i><br><br>
             </a>
   
@@ -48,7 +48,7 @@
             <i class="fas fa-user"></i></i><br><br>
             </a>
   
-            <a href='/cart'>
+            <a href='/'>
               <i class="fas fa-shopping-basket"></i><br><br>
             </a>
             

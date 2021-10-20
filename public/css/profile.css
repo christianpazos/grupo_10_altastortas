@@ -5,7 +5,8 @@ body {
   font-family: "Roboto", sans-serif;
 }
 main {
-  background-color: #a2d2ff;
+  background-color: hsl(209, 100%, 82%);
+  display: grid;
 }
 
 .formularioRegistro {

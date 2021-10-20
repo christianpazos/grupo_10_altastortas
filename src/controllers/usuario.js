@@ -19,19 +19,18 @@ module.exports = {
     profile:(req,res) => res.render("users/profile",{
       title:"Perfil de Usuario"
     }),
-    processRegister: async (req, res) => {
-        try {
-          const resultValidation = validationResult(req);
-          if (resultValidation.errors.length > 0){
-              return res.render ('users/register',{
-                  errors: resultValidation.mapped(),
-                  data: req.body,
-              });
-          }
-        } catch (error) {
-          console.log(error);
-        }
-      },
+    show:(req,res)=>{
+      User.findAll({
+					order: [
+					['id', 'DESC']
+					]}
+			).then(users => {
+				return res.render('users/listUsers', { 
+          title:"Listado de Usuario",
+          users:users });
+			})
+			.catch(error => console.log(error));
+    },
     save: async(req,res) => {
       try {        
         let errors = validationResult(req);//guardamos los datos , y variable para los errores
@@ -42,9 +41,9 @@ module.exports = {
               contraseña: bcrypt.hashSync(req.body.contraseña,10),
               esAdmin: String(req.body.email).includes("@altastortas") || (req.body.email).includes("@at") ? true: false,//si es con @digitalhose o @dh va hacer admin o no
               //contrase;a la encripto , cantidad de veces del intentado
-              avatar: 'uploads/avatar'+ req.file.filename
+              avatar: "uploads/avatar/"+ req.file.filename
               });
-            //despues de crear, pag login 
+              return res.redirect("/usuarios/login") 
             }else{//de modo contrario ir a la vista con los errores
                 if (req.file != undefined){fs.unlinkSync(path.resolve(__dirname,
                     "../../public/uploads/avatar/", 
@@ -108,6 +107,25 @@ module.exports = {
       req.session.user = user;
       return res.redirect("/") 
 
+      }
+    },
+    delete:async(req,res)=>{
+      try {
+        let userId= await User.findByPk(req.params.id)
+        let imagenDefault='';
+        if (userId.avatar!= 'default_user.png'){
+          imagenDefault= path.join(__dirname,'../../public/uploads/avatar/'+ userId.avatar);
+        }
+        User.destroy({where:{id:req.params.id}}).then(deleteUser=>{
+          if(fs.existsSync(imagenDefault)){
+             fs.unlinkSync(imagenDefault)
+          }
+        });
+        req.session.destroy();
+        res.cookie("user",null, {maxAge:1});
+        return res.redirect('../login')
+      } catch (error) {
+        console.log(error);
       }
     },
   test: async(req, res) => {

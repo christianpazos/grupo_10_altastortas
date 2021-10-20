@@ -114,7 +114,7 @@ module.exports = {
         try {
             const productos= await Product.findOne({where:{id:req.params.id}}) 
             const categorias= await Category.findAll() 
-            console.log(productos);
+            //console.log(productos);
             res.render("products/edit", 
             {title: "Edicion de producto", 
             style: "formregistro", 
@@ -163,7 +163,7 @@ module.exports = {
                         errors:errors.mapped(),
                         data:req.body/*pasar la vieja data*/
                         });
-                        console.log(result)
+                        //console.log(result)
                 }
 
                 } catch (error) {

@@ -1,0 +1,36 @@
+<%- include("../includes/head") %> 
+
+<body>
+<!-- Header -->
+<%- include("../includes/header") %> 
+<!-- Fin del Header -->
+<!-- Main -->
+<main>
+  <!-- Section -->
+  
+<section class="productos">
+  <h3 class="titulares">¡No llegues a esa ocasión especial sin una SUPER TORTA!</h3>
+
+  <% users.forEach(usuario => { %>
+    <article>
+            <figure><img class="grande" src="/<%= usuario.avatar%>" alt=""></figure>
+            <section>
+              <h3 class="descripciones"> ID <%= usuario.id %></h3>
+              <h3 class="descripciones"> <%= usuario.nombre %></h3>
+              <h3 class="descripciones"> <%= usuario.email %></h3>
+              <% if (usuario.esAdmin == 1) { %>
+                <h3 class="descripciones"> Es Admin</h3>
+                <% }else{ %>
+                    <h3 class="descripciones"> Es Usuario mortal </h3>
+                    <% } %>   
+              <p class="precios"> $<%= usuario.email %></p>
+              <a href='/usuarios/profile/<%= usuario.id %>'  class="botonproductos">Ver más info de <%= usuario.nombre %></a>
+            </section>
+    </article>        
+  <% }) %> 
+
+</section>
+</main>
+  <!-- Footer -->
+<%- include("../includes/footer") %> 
+</body>

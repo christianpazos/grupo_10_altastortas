@@ -5,7 +5,7 @@
   <%- include("../includes/header") %> 
   <!-- Fin del Header -->
   <!-- Main -->
-  <main>
+  <main class="container">
     <form action="/usuarios/update/<%= user.id %>?_method=PUT" class="formularioRegistro" method="POST" id="profileForm" enctype="multipart/form-data">
       <% if(user && user.esAdmin) {%>
     <fieldset>
@@ -23,7 +23,7 @@
             <% } %>
     </fieldset>
     <figure id="avatarPreview">
-          <img src="<%= user.avatar%>" alt="<%= user.name%>">
+          <img src="/<%= user.avatar%>" alt="<%= user.avatar%>">
     </figure>
     <fieldset>
             <label for="avatar"></label>
@@ -52,13 +52,17 @@
             <button type="submit"><i class="fas fa-sync"></i></button>
     </fieldset>
   </form>
-      
+  <fieldset>
+  <form action="/usuarios/delete/<%= user.id %>?_method=DELETE" method="POST">
+    <button type="submit"  >Eliminar Usuario <i class="fas fa-eraser"></i></button>
+  </form>
   <% }%>
 
-  <nav>
-    <a href="/">volver <i class="fas fa-home"></i></a>
+  <fieldset>
     <a href="/usuarios/logout">logout <i class="fas fa-power-off"></i></a>
-  </nav>
+  </fieldset>
+  </fieldset>
+    
   </main>
   <!-- Footer -->
   <%- include("../includes/footer") %> 
